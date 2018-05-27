@@ -1,0 +1,282 @@
+<div class="row">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label for="registrationProcess1" class="col-lg-4 header-label-active" disabled ng-bind="'Nationality: '+addSubscriberObj.subscriberData.subscriberDetails[0].subscriberType"></label>
+			</div>
+		</div>
+	</div>
+</div>
+	<fieldset>
+		<legend>{{"Personal details" | translate}}</legend>
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label>{{"MSISDN" | translate}} <span class="mandatory">*</span></label>
+					<div class="form-group">
+						<p class="form-control" ng-bind="addSubscriberObj.subscriberData.msisdn" disabled></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label>{{"Sim Serial Number" | translate}} <span class="mandatory">*</span></label>
+					<div class="form-group">
+						<input class="form-control"
+							ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].simSerialNumber" name="simSerial" id="simSerial"
+							placeholder="{{'Enter' | translate}} {{'Sim Serial No' | translate}}" 
+							ng-pattern="/(^[0-9]\d{0,5}$)/" maxlength="5" minlength="5" required>
+						<p class="error-msg" ng-show="subscriberForm.$submitted || subscriberForm.simSerial.$touched">
+							<span ng-show="subscriberForm.simSerial.$error.required"
+							class="mandatory">{{ 'sim_serial_req' | translate}}</span>
+							<span ng-show="subscriberForm.simSerial.$error.pattern"
+							class="mandatory">{{'only_num' | translate}}</span>
+							<span ng-show="subscriberForm.simSerial.$error.minlength"
+							class="mandatory">{{'nineteen_digit' | translate}}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label>{{"First name" | translate}} <span class="mandatory">*</span></label>
+					<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].firstName"></p>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label>{{"Last name" | translate}} <span class="mandatory">*</span></label>
+					<input class="form-control"
+						name="lastName" id="lastName"
+						ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].lastName"
+						placeholder="Enter Last Name" required="required"
+						max-length="70" min-length="3" ng-pattern="/^((?!.*abcde|bcdef|cdefg|defgh|efghi|fghij|ghijl|hijkl|ijklm|jklmn|klmno|lmnop|mnopq|nopqr|opqrs|pqrst|qrstu|rstuv|stuvw|tuvwx|uvwxy|vwxyz|qwer|wert|erty|rtyu|tyui|yuio|uiop|asdf|sdfg|dfgh|fghj|ghjk|hjkl|zxcv|xcvb|cvbn|vbnm)([a-zA-Z])\2?(?!\2{2}))+$/">
+					<p class="error-msg" 
+						ng-show="subscriberForm.$submitted || subscriberForm.lastName.$touched">
+						<span ng-show="subscriberForm.lastName.$error.pattern"
+							class="mandatory">{{'Numbers and special character not allowed.' | translate}}</span>
+						<span ng-show="subscriberForm.lastName.$error.required"
+							class="mandatory">{{ 'enter last name' | translate}}</span>
+						<span ng-show="subscriberForm.lastName.$error.minlength"
+							class="mandatory">{{'Min 3 letters required' | translate}}</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label>{{"Date of birth" | translate }}<span class="mandatory">*</span></label>
+					<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].dateOfBirth"></p>													
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Alternate No." | translate}} <span class="mandatory">*</span></label>
+				<div class="form-group">
+					<input class="form-control"
+						ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].alternateNo" name="msisdn" id="msisdn"
+						placeholder="{{'Enter' | translate}} {{'MSISDN' | translate}}"  
+						ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" maxlength="9"	minlength="9" required>
+				</div>
+				<p class="error-msg" ng-show="subscriberForm.$submitted || subscriberForm.msisdn.$touched">
+					<span ng-show="subscriberForm.msisdn.$error.required"
+					class="mandatory">{{ 'msisdn_req' | translate}}</span>
+					<span ng-show="subscriberForm.msisdn.$error.pattern"
+					class="mandatory">{{'only_num' | translate}}</span>
+					<span ng-show="subscriberForm.msisdn.$error.minlength"
+					class="mandatory">{{'nine_digit' | translate}}</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Is end user a minor?" | translate}} </label><span class="mandatory">*</span></label> 
+				<select class="form-control" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].isMinor" name="isMinor">
+				 	<option value="Yes">Yes</option>
+				 	<option value="No">No</option>
+				</select>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.isMinor.$touched">
+					<span ng-show="subscriberForm.isMinor.$error.required"
+						class="mandatory">{{"Is end user a minor" | translate}}.</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Gender" | translate }}<span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].gender"></p>
+			</div>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>{{"Residential address" | translate}}</legend>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Physical Address" | translate}} <span class="mandatory">*</span></label>
+				<textarea class="form-control" name="residential_addr" required placeholder="Enter physical address" maxlength="64"
+					ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].address.permanentAddress">
+				</textarea>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.residential_addr.$touched">
+					<span ng-show="subscriberForm.residential_addr.$error.required"
+						class="mandatory">{{"Please enter address." | translate}}</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"District" | translate}} <span class="mandatory">*</span></label>
+				<select class="form-control"
+					name="district" required
+					ng-model ="addSubscriberObj.subscriberData.subscriberDetails[0].address.district"
+					ng-options="district  as (district.districtName) for district in districts track by district.districtId">
+					<option value=" ">--: {{"Select" | translate}}:--</option>
+				</select>
+					<!-- ng-model="addSubscriberObj.customerdetail.district" -->
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.district.$touched">
+					<span ng-show="subscriberForm.district.$error.required"
+						class="mandatory">{{"Please select any district." | translate}}</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Nationality" | translate}} <span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].nationality.countryName"></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-lg-4" ng-hide="true">
+			<div class="form-group">
+				<label>{{"Country of Origin" | translate}} <span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].address.countryId.countryName"></p>
+			</div>
+		</div> -->
+		<div class="col-lg-4" ng-hide="true">
+			<div class="form-group">
+				<label>{{"Place of Birth" | translate}} <span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].placeOfBirth"></p>
+			</div>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>{{"Subscriber ID" | translate}}</legend>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Id Type" | translate}} <span class="mandatory">*</span></label> 
+				<select class="form-control"
+					name="idType" ng-change="checkIdAvailable(addSubscriberObj.subscriberData.subscriberDetails[0].subscriberIdDetails[0].idType)"
+					ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].subscriberIdDetails[0].idType"
+					required="required" ng-options="id.id_desc as id.id_name for id in ids | filter:shouldShow">
+					<option value=" ">--: {{"Select" | translate}}:--</option>
+				</select>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idType.$touched">
+					<span ng-show="subscriberForm.idType.$error.required"
+						class="mandatory">{{"Please select ID type" | translate}}</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Id Number" | translate}} <span class="mandatory">*</span></label> 
+					<input minlength="3" maxlength="20"
+					class="form-control" name="idNumber" id="idNumber" ng-required="idNoRequired"
+					ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].subscriberIdDetails[0].idNumber"
+					placeholder="{{'Enter id number' | translate}}">
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idNumber.$touched">
+					<span ng-show="subscriberForm.idNumber.$error.required"
+						class="mandatory">{{'Please enter identification number' | translate }}</span>
+					<span ng-show="subscriberForm.idNumber.$error.minlength "
+					class="mandatory">{{'Minimum characters in id number is :' | translate}}3</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Create Airtel Money A/c?" | translate}} <span class="mandatory">*</span></label> 
+				 <select class="form-control" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].amAccount" name="amAccount">
+				 	<option value="Yes">YES</option>
+				 	<!-- <option value="No">NO</option> -->
+				 </select>													
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.amAccount.$touched">
+					<span ng-show="subscriberForm.amAccount.$error.required"
+						class="mandatory">{{"Do You Want To Create Airtel Money A/c" | translate}}.</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"Id front Image" | translate}} <span class="mandatory">*</span></label>
+				<input id="idFront"
+					class="form-control" type="file"  filevalid name="idFront" accept="image/png,image/jpeg,image/jpg"
+					base-sixty-four-input ng-model="imagesObject.idFront" zoomfn = "true"/>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idFront.$touched">
+					<span ng-show="subscriberForm.idFront.$error.accept"
+						class="mandatory">{{'Only jpeg/png files are supported' | translate }}</span>
+					<span ng-show="subscriberForm.idFront.$error.filevalid"
+						class="mandatory">{{'File name is not valid' | translate }}</span>
+				</p>
+				<!-- <div id="imgview" imgview name="imagesObject.idFrontPath" imgname="idFrontImg"></div> -->
+				<!-- <canvas-viewer src="imagesObject.idFrontPath" imgid="idFrontImg" options="options"></canvas-viewer> -->
+				<img id="idFrontImg" crossOrigin="Anonymous" class="block imgSmall" src="{{imagesObject.idFrontPath}}" />
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"Id back Image" | translate}}  <span class="mandatory">*</span></label>
+				<input id="idBack"
+					class="form-control" type="file" filevalid name="idBack" accept="image/png,image/jpeg,image/jpg"
+					base-sixty-four-input ng-model="imagesObject.idBack" zoomfn = "false"/>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idBack.$touched">
+					<span ng-show="subscriberForm.idBack.$error.accept"
+						class="mandatory">{{'Only jpeg/png files are supported' | translate }}</span>
+					<span ng-show="subscriberForm.idBack.$error.filevalid"
+						class="mandatory">{{'File name is not valid' | translate }}</span>
+				</p>
+				<!-- <div id="imgview" imgview name="imagesObject.idBackPath" imgName="idBackImg"></div> -->
+				<!-- <canvas-viewer src="imagesObject.idBackPath" imgid="idBackImg" options="options1"></canvas-viewer> -->
+				<img id="idBackImg" crossOrigin="Anonymous" class="block imgSmall" src="{{imagesObject.idBackPath}}" />
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"Id physical form" | translate}}  <span class="mandatory">*</span></label>
+				<input id="physicalFormId"
+					class="form-control ng-hide" type="file" filevalid name="physicalFormId" accept="image/png,image/jpeg,image/jpg"
+					 base-sixty-four-input ng-model="imagesObject.physicalFormId">
+				<!-- <div id="imgview" imgview name="imagesObject.physicalFormIdPath"></div> -->
+				<img id="physicalFormIdImg" crossOrigin="Anonymous" class="block imgSmall" src="{{imagesObject.idPhysicalFormPath}}" />
+			</div>
+		</div>
+	</div>
+</fieldset>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="form-group">
+			<label>{{"Use of proxy for registration" | translate }}</label>		
+			<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].proxyForRegistration"></p>
+		</div>
+	</div>
+	<div class="form-group text-right col-md-8 margin-top-25">
+		<input type="submit" class="btn btn-danger"
+			 value="{{'Submit' | translate}}" ng-disabled="submitDisabled"/>
+		<p ng-if="submitDisabled">Age should be above 18 years</p>
+		<input type="button" class="btn btn-default" data-dismiss="modal"
+			value="{{'Close' | translate}}" />
+	</div>
+</div>

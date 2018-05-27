@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<jboss-deployment-structure>
+   <deployment>
+   
+     
+	     <!-- <Context docBase="D:/imagepath" path="/resources">
+	     
+	     </Context> -->
+     
+        <!-- <exclude-subsystems>
+			<subsystem name="jpa" />
+		</exclude-subsystems>
+		<exclusions>
+			<module name="javaee.api" />
+			<module name="javax.persistence.api" />
+			<module name="org.hibernate" />
+		</exclusions> -->
+
+	   <!--  <exclude-subsystems>  
+	        <subsystem name="logging" />  
+	    </exclude-subsystems>  -->
+	    
+	    <exclusions>
+       		<module name="org.apache.log4j" />
+     	</exclusions> 
+
+   </deployment>
+ </jboss-deployment-structure>
+

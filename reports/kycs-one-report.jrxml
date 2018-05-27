@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cp-report-log" language="groovy" pageWidth="876" pageHeight="842" columnWidth="836" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c287f9df-527f-45e4-b040-b4ec696dd99f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="18"/>
+	<property name="ireport.y" value="0"/>
+	<import value="org.apache.commons.lang.time.*"/>
+	<style name="alternating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2!=0]]></conditionExpression>
+			<style backcolor="#AAD7F8"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#C5E2F7"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="created_on" class="java.util.Date"/>
+	<queryString language="plsql">
+		<![CDATA[{call KYCS_REPORT_ONE($P{created_on},$P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="USER_ID" class="java.math.BigDecimal"/>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="TOTAL_COUNT" class="java.math.BigDecimal"/>
+	<field name="APPROVED_COUNT" class="java.math.BigDecimal"/>
+	<field name="BARRED_COUNT" class="java.math.BigDecimal"/>
+	<field name="AVG_PROCESS_TIME" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="14e9628d-046e-4a9e-a2ad-d10b02c1006c" x="278" y="2" width="280" height="42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Executive Performance]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d878c6c5-a3ed-4f98-b4f6-3417c537519a" x="46" y="1" width="141" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="940b6f56-4b45-4c66-a2b8-c79b8d4a873a" x="187" y="1" width="141" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Processed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c08de432-fde4-416e-bde1-d84c16182e8c" x="328" y="1" width="141" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Approved]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5ab2f037-f3c9-41d1-9020-90c3c3eb05ce" x="469" y="1" width="141" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Barred]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d824816c-1901-4ad2-8bdf-d8fd4866092b" x="610" y="1" width="180" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avg. Processing Time]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="13d6afe3-1271-4f50-bce1-fe380dd8f07f" x="46" y="0" width="141" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c03fd9a5-e5a8-4cb4-aa93-a8cffba752b5" x="187" y="0" width="141" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="281ead7a-dfa6-4745-ae10-c9330df17a30" x="328" y="0" width="141" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{APPROVED_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9c8d418-d070-4a39-8eae-c5bd3c84ed0d" x="469" y="0" width="141" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BARRED_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b90b6615-acb6-43be-a126-fc0c2f1e11af" x="610" y="0" width="180" height="25">
+					<printWhenExpression><![CDATA[$F{AVG_PROCESS_TIME}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AVG_PROCESS_TIME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

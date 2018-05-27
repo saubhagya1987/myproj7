@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              {{'Bulk Upload' | translate }}
+            </div>
+            <div class="panel-body">
+            	<form role="form" name="bulkForm" novalidate>
+                    <div class="row">  
+                      	<div class="col-lg-4" access="ROLE_ADMIN,ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR">
+                         	<div class="form-group">
+	                         	<label>{{"Upload New Customer Data" | translate}}</label>
+	                          	<input 
+									class="form-control" type="file" id="newCustomerUpload" name="newCustomerUpload" accept=".zip" file-model 
+									ng-model="newCustomerUpload">
+								<p class="error-msg"
+									ng-show="bulkForm.$submitted || bulkForm.newCustomerUpload.$touched">
+									<span ng-show="bulkForm.newCustomerUpload.$error.required"
+										class="mandatory">{{'File is required' | translate }}</span>
+									<span ng-show="bulkForm.newCustomerUpload.$error.accept"
+										class="mandatory">{{'Only zip files are supported' | translate }}</span> 
+								</p>
+							</div>
+							<button class="btn btn-danger" ng-disabled="bulkForm.newCustomerUpload.$invalid" ng-click="uploadFile(API.customerUpload_API,newCustomerUpload,'newCustomerUpload')">Upload New Customer Data</button>
+                        </div>
+                        <div class="col-lg-4" access="ROLE_ADMIN">
+                         	<div class="form-group">
+	                         	<label>{{"Upload Old Customer Data" | translate}}</label>
+	                          	<input 
+									class="form-control" type="file" filevalid id="oldCustomerUpload" name="oldCustomerUpload" accept=".zip" 
+									 file-model ng-model="oldCustomerUpload">
+								<p class="error-msg"
+									ng-show="bulkForm.$submitted || bulkForm.oldCustomerUpload.$touched">
+									<span ng-show="bulkForm.oldCustomerUpload.$error.required"
+										class="mandatory">{{'File is required' | translate }}</span>
+									<span ng-show="bulkForm.oldCustomerUpload.$error.accept"
+										class="mandatory">{{'Only zip files are supported' | translate }}</span> 
+								</p>
+							</div>
+							<button class="btn btn-danger"  ng-disabled="bulkForm.oldCustomerUpload.$invalid" ng-click="uploadFile(API.customerUpload_API,oldCustomerUpload,'oldCustomerUpload')">Upload Old Customer Data</button>
+                        </div>
+                        <div class="col-lg-4" access="ROLE_ADMIN">
+                         	<div class="form-group">
+	                         	<label>{{"Upload CP User Data" | translate}}</label>
+	                          	<input 
+									class="form-control" type="file" id="userCPUpload" name="userCPUpload" accept=".zip" 
+									file-model ng-model='userCPUpload'>
+								<p class="error-msg"
+									ng-show="bulkForm.$submitted || bulkForm.userCPUpload.$touched">
+									<span ng-show="bulkForm.userCPUpload.$error.required"
+										class="mandatory">{{'File is required' | translate }}</span>
+									<span ng-show="bulkForm.userCPUpload.$error.accept"
+										class="mandatory">{{'Only zip files are supported' | translate }}</span> 
+								</p>
+							</div>
+							<button class="btn btn-danger"  ng-disabled="bulkForm.userCPUpload.$invalid" ng-click="uploadFile(API.userUpload_API,userCPUpload,'userCPUpload')">Upload User Data</button>
+                        </div>
+                    </div>
+                    <div class="row margin-top-25">
+                        <div class="col-lg-4" access="ROLE_ADMIN">
+                         	<div class="form-group">
+	                         	<label>{{"Upload Non CP User Data" | translate}}</label>
+	                          	<input 
+									class="form-control" type="file" id="userNonCPUpload" name="userNonCPUpload" accept=".zip"  file-model ng-model="userNonCPUpload">
+								<p class="error-msg"
+									ng-show="bulkForm.$submitted || bulkForm.userNonCPUpload.$touched">
+									<span ng-show="bulkForm.userNonCPUpload.$error.required"
+										class="mandatory">{{'File is required' | translate }}</span>
+									<span ng-show="bulkForm.userNonCPUpload.$error.accept"
+										class="mandatory">{{'Only zip files are supported' | translate }}</span> 
+								</p>
+							</div>
+							<button class="btn btn-danger"  ng-disabled="bulkForm.userNonCPUpload.$invalid" ng-click="uploadFile(API.userUpload_API,userNonCPUpload,'userNonCPUpload')">Upload User Data</button>
+                        </div>
+                     </div>
+                </form>
+            </div>
+       </div>
+   </div>
+</div>

@@ -1,0 +1,183 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              {{'Open Cases' | translate }}
+            </div>
+            <div class="panel-body">
+            	<form role="form" ng-submit="searchCases()" name="searchForm" novalidate>
+                        <div class="row">  
+                            <div class="col-lg-3">
+	                            <div class="form-group">
+	                            	<label>{{"Case Type" | translate}}</label>
+		                            <select class="form-control" name="caseType" id="caseType" ng-change="resetPage()"
+		                            	ng-model="searchData.caseType">
+									<option value=" ">--: Select CM Type:--</option>
+									<option value="NEW">New Registration</option>
+									<option value="EDIT">KYC Edit</option>
+									<option value="EXISTING">Existing Subscriber- New Line</option>
+									<option value="AM">AM registration</option>
+									</select>
+								</div>
+                            </div>
+                            <div class="col-lg-3">
+	                            <div class="form-group">
+	                            	<label>{{"MSISDN" | translate}}</label>
+	                                <input type="text" class="form-control" name="msisdn" placeholder="{{'MSISDN' | translate }}" autofocus ng-model="searchData.msisdn" ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" maxlength="9">
+	                                <p class="error-msg" ng-show="searchForm.msisdn.$dirty || searchForm.msisdn.$invalid">
+										<span ng-show="searchForm.msisdn.$error.pattern" class="mandatory">{{'Only numbers are allowed.' | translate}}</span>
+									</p>
+	                            </div>
+	                        </div> 
+	                        <div class="col-lg-3">
+	                            <div class="form-group">
+	                            	<label>{{"First Name" | translate}}</label>
+									<input class="form-control"	ng-model="searchData.firstName"
+										placeholder="Enter First Name" name="firstName" id="firstName"
+										ng-pattern="/^((?!.*abcde|bcdef|cdefg|defgh|efghi|fghij|ghijl|hijkl|ijklm|jklmn|klmno|lmnop|mnopq|nopqr|opqrs|pqrst|qrstu|rstuv|stuvw|tuvwx|uvwxy|vwxyz|qwer|wert|erty|rtyu|tyui|yuio|uiop|asdf|sdfg|dfgh|fghj|ghjk|hjkl|zxcv|xcvb|cvbn|vbnm)([a-zA-Z])\2?(?!\2{2}))+$/"
+										max-length="70" min-length="3">
+									<p class="error-msg" ng-show="searchForm.$submitted || searchForm.firstName.$touched">
+										<span ng-show="searchForm.firstName.$error.pattern"
+											class="mandatory">{{'Numbers and invalid sequence not allowed.' | translate}}</span>
+										<span ng-show="searchForm.firstName.$error.minlength"
+											class="mandatory">{{'Min 3 letters required' | translate}}</span>													
+									</p>
+	                            </div>
+	                        </div> 
+	                        <div class="col-lg-3">
+	                            <div class="form-group">
+	                            	<label>{{"ID No." | translate}}</label>
+	                                <input minlength="3" maxlength="20" class="form-control" name="idNumber" id="idNumber"
+										ng-model="searchData.idNumber"
+										placeholder="{{'Enter id number' | translate}}">
+									<p class="error-msg"
+										ng-show="searchForm.$submitted || searchForm.idNumber.$touched">
+										<span ng-show="searchForm.idNumber.$error.minlength "
+										class="mandatory">{{'Minimum characters in id number is : ' | translate}}3</span>
+									</p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="row margin-bottom-15">
+                            <div class="col-lg-12 text-right">
+                            	<input type="submit" class="btn btn-danger" value="Search">
+                            </div>                      
+                        </div>
+                </form>				
+             	<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover"
+						id="dataTables-example">
+						<thead>
+							<tr>
+								<th>{{"MSISDN" | translate}}</th>
+								<th>{{"Transaction ID" | translate}}</th>
+								<th>{{"Name" | translate}}</th>
+								<th data-ng-if="searchData.roleName=='KYC-SUPERVISOR'">{{"ASSIGNED TO" | translate}}</th>
+								<th data-ng-if="searchData.roleName=='KYC-SUPERVISOR'">{{"AUUID/USERNAME" | translate}}</th>
+								<th>{{"Created On" | translate}}</th>
+								<th>{{"Created By" | translate}}</th>
+								<th>{{'Edit' | translate}}</th>
+								<!-- <th>{{"Approve" | translate}}</th>
+								<th>{{"Partial" | translate}}</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="case in cases">
+								<td>{{case.msisdn}}</td>
+								<td>{{case.kycTansactionId}}</td>
+								<td>{{case.subscriberDetails[0].firstName + " " +case.subscriberDetails[0].lastName}}</td>
+								<td data-ng-if="searchData.roleName=='KYC-SUPERVISOR'">{{case.subscriberDetail[0].userName?case.subscriberDetail[0].userName:'Not Assigned'}}</td>
+								<td data-ng-if="searchData.roleName=='KYC-SUPERVISOR'">{{case.subscriberDetail[0].caseAssignedNumber?case.subscriberDetail[0].caseAssignedNumber:'Not Assigned'}}</td>
+								<td>{{case.createdOn | date:'dd/MM/yyyy hh:mm:ss a'}}</td>
+								<td>{{case.createdBy}}</td>
+								<td><span class="fa fa-edit" ng-click="openModal($index)"></span></td>
+								<!-- <td><span class="fa fa-check-square" ng-click="reasonStatus(case.subscriberId,'APPROVED')"></span></td>
+								<td><span class="fa fa-times-circle-o" aria-hidden="true" ng-click="reasonStatus(case.subscriberId,'BARRED')"></span></td> -->
+							</tr>
+						</tbody>
+					</table>
+					<paging data-ng-if="!(cases && cases.length==0)" paging-action="pagination(page, pageSize, total)"
+					    class="small col-md-12"
+					    page="currentPage" 
+					    page-size="10" 
+					    total="totalCount"
+					    text-first="first"
+					    text-last="last" 	
+					    text-next="next"
+					    text-prev="prev"
+					    show-prev-next="true"
+					    show-first-last="true"
+					    text-next-class="glyphicon glyphicon-chevron-right defaultColor"
+					    text-prev-class="glyphicon glyphicon-chevron-left defaultColor"
+					    text-first-class="glyphicon glyphicon-backward defaultColor"
+					    text-last-class="glyphicon glyphicon-forward defaultColor">
+					</paging>
+					<div class="text-center" data-ng-if="cases && cases.length==0">
+						<label class="noResults">No Results Found</label>
+					</div>
+				</div>
+				<!-- /.table-responsive -->
+			</div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="modal fade edit-modal" id="editSubscriberModal" role="dialog" aria-labelledby="editSubscriberModal" >  <!-- data-ng-if="showAddSubscriberModal" -->
+	<div class="modal-dialog modal-lg modal-xs modal-sm full-modal" role="document">
+	   <div class="modal-content">
+	   		<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">{{heading | translate}}
+							<button type="button" class="close" data-ng-click="closeModal()" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+						</div>
+						<div class="panel-body">
+							<form role="form" class="myForm" name="subscriberForm" id="subscriberForm" ng-submit="editSubscriber()" novalidate>
+								<div class="col-md-12" ng-include="templates.editSubscriberModal" data-ng-if="templates.showModal"></div>
+								<div class="form-group text-right col-md-12 margin-top-25">
+									<input type="button" class="btn btn-default"
+										value="{{'Approve' | translate}}" ng-click="reasonStatus(addSubscriberObj.subscriberData.subscriberId,'APPROVED')"/>
+									<input type="button" class="btn btn-default"
+										value="{{'Partial' | translate}}" ng-click="reasonStatus(addSubscriberObj.subscriberData.subscriberId,'BARRED')" />
+									<input type="submit" class="btn btn-danger"
+										 value="{{'Submit' | translate}}" ng-disabled="submitDisabled"/>
+									<input type="button" class="btn btn-default" data-ng-click="closeModal()"
+										value="{{'Close' | translate}}" />
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+	   </div>
+	</div>
+</div>
+<div class="modal fade status" id="statusModal" role="dialog" aria-labelledby="statusModal">
+	<div class="modal-dialog modal-lg" role="document">
+	   <div class="modal-content">
+	   		<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">{{templates.headingStatusModal | translate}}
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+						</div>
+						<div class="panel-body">
+							<form role="form" class="myForm" name="statusForm" id="statusForm" ng-submit="changeStatus()" novalidate>
+								<div class="col-md-12" ng-include="templates.statusModal"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+	   </div>
+	</div>
+</div>

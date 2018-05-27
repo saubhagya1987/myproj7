@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              {{'Dashboard' | translate }}
+            </div>
+            <div class="panel-body">
+            	 <div class="row">
+            	 	<stats access="ROLE_ADMIN"
+							comments="{{'User Management' | translate}}"
+							type="fa fa-users" ui-sref="dashboard.userManagement" hide-no="true">				
+					</stats>
+					<stats access="ROLE_ADMIN"
+							comments="{{'Manage Input Data' | translate}}"
+							type="fa fa-user" ui-sref="dashboard.management" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Customer Registration' | translate}}"
+							type="fa fa-user-plus" ui-sref="dashboard.addSubscriber" hide-no="true">				
+					</stats>
+					<stats access="ROLE_ADMIN"
+							comments="{{'Reset Password (CP)' | translate}}"
+							type="fa fa-retweet" ui-sref="dashboard.resetPassword" hide-no="true">				
+					</stats>
+					<stats access="ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR"
+							comments="{{'Open Cases' | translate}}"
+							type="fa fa-envelope-open" ui-sref="dashboard.openCases" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR"
+							comments="{{'Closed Cases' | translate}}"
+							type="fa fa-envelope" ui-sref="dashboard.closeCases" hide-no="true">				
+					</stats>
+					<stats access="ROLE_SND_DIRECTOR,ROLE_TSM"
+							comments="{{'Create CP' | translate}}"
+							type="fa fa-handshake-o" ui-sref="dashboard.createCp" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Existing Customer New Sim' | translate}}"
+							type="fa fa-user-plus" ui-sref="dashboard.addSubscriberNewSim" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Customer Edit' | translate}}"
+							type="fa fa-edit" ui-sref="dashboard.editSubscriber" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Customer Edit Non Approved' | translate}}"
+							type="fa fa-edit" ui-sref="dashboard.editNotApprovedSubscriber" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Customer Edit Barred' | translate}}"
+							type="fa fa-edit" ui-sref="dashboard.editBarredSubscriber" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Customer AM Registration' | translate}}"
+							type="fa fa-user-plus" ui-sref="dashboard.subscriberAmReg" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Commission Rules' | translate}}"
+							type="fa fa-bar-chart" ui-sref="dashboard.commissionRules" hide-no="true">				
+					</stats>
+					<stats access="ROLE_ADMIN"
+							comments="{{'Commission Rules' | translate}}"
+							type="fa fa-bar-chart" ui-sref="dashboard.commissionRulesEdit" hide-no="true">				
+					</stats>
+					<stats access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES"
+							comments="{{'Customer Search' | translate}}"
+							type="fa fa-search" ui-sref="dashboard.searchCustomer" hide-no="true">				
+					</stats>
+					<stats access="ROLE_SADMIN,ROLE_ADMIN,ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR"
+							comments="{{'Bulk Upload' | translate}}"
+							type="fa fa-upload" ui-sref="dashboard.bulkUpload" hide-no="true">				
+					</stats>
+					<stats access="ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR,ROLE_SND_DIRECTOR,ROLE_TSM,ROLE_SND_NATIONAL_TEAM,ROLE_ZBM"
+							comments="{{'Reports' | translate}}"
+							type="fa fa-line-chart" ui-sref="dashboard.reportsHome" hide-no="true">				
+					</stats>
+            	 </div>
+            </div>
+        </div>
+    </div>
+</div>

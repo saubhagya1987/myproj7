@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.airtel</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>kyczm</name>
+	<description>Parent project</description>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>../kyc-business</module>
+		<module>../kyc-controller</module>
+		<module>../kyc-helper</module>
+		<module>../kyc-integration-service</module>
+		<module>../kyc-persistence</module>		
+		<module>../kyc-root</module>
+		<module>../user-controller</module>
+		<module>../user-helper</module>
+		<module>../user-persistence</module>
+		<module>../user-security</module>
+		<module>../user-service</module>
+		<module>../airtel-ssf-service</module>
+		<module>../airtel-ema-service</module>
+		<module>../airtel-smpp-service</module>
+		<module>../airtel-singleview-service</module>
+		<module>../airtel-am-soap-service</module>		
+		<module>../airtel-tt</module>
+	</modules>
+	
+	<artifactId>kyczm</artifactId>
+</project>

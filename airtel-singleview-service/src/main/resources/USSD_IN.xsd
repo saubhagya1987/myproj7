@@ -1,0 +1,3330 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:UDG="http://tresoap.intecbilling.com/2.0/USSD" xmlns:ed="http://www.intecbilling.com/singleview/config/xsd/ExtDefnXmlSchemaAppinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tresoap.intecbilling.com/2.0/USSD" xsi:schemaLocation="http://www.intecbilling.com/singleview/config/xsd/ExtDefnXmlSchemaAppinfo file:///svw/svwtst1b/rel/server/config/xsd/ExtDefnXmlSchemaAppinfo.xsd">
+<xs:annotation>
+<xs:appinfo>
+      <ed:Namespace>
+        <versionStr>$Revision: 1.2 $$Date: 2014/10/11 11:43:59 $</versionStr>
+        <description>
+$Revision: 1.2 $</description>
+        <schemaLocation>/svw/svwtst1b/data/server/config/xsd</schemaLocation>
+      </ed:Namespace>
+    </xs:appinfo>
+<xs:documentation>XML Schema generated from External Definitions</xs:documentation>
+</xs:annotation>
+<xs:complexType name="CHANGEMSISDN">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/21 19:08:32 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element default="0" name="pArea" type="xs:string"/>
+<xs:element default="G" name="pSubscrType" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pServices" nillable="true" type="UDG:pServices"/>
+<xs:element name="pNewsubno" type="xs:string"/>
+<xs:element default="NULL" name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="PSndcmd" type="xs:string"/>
+<xs:element name="pAdditionalparams" nillable="true" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CHANGEMSISDNResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/21 19:08:38 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CHANGESERVICE">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.5 $$Date: 2015/09/14 05:22:00 $</versionStr>
+          <description>Uses for updateService API
+$Revision: 1.5 $ 
+</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pSubscrType">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pSubNo">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pUsername">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pServices" type="UDG:pCSServices"/>
+<xs:element minOccurs="0" name="pSubsidyFlag">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pAdditionalparams" nillable="true" type="UDG:pCSAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CHANGESERVICEResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:19:42 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:CSService"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CHANGESIMCARD">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/20 01:51:24 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element default="0" name="pArea" type="xs:string"/>
+<xs:element default="G" name="pSubscrType" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" nillable="true" type="UDG:pServices"/>
+<xs:element name="pNewsimcard" type="xs:string"/>
+<xs:element default="NULL" name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pAdditionalparams" nillable="true" type="UDG:pAdditionalparams"/>
+<xs:element default="Y" name="pCommitTrans" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CHANGESIMCARDResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/20 01:59:41 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSOperation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/11/14 13:20:10 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="OutputParams" type="UDG:CSOutputParams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSOutputParams">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/11/14 13:20:17 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Code">
+<xs:simpleType>
+<xs:restriction base="xs:long">
+<xs:minExclusive value="1"/>
+<xs:maxExclusive value="80"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Description">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSSParam">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:20:22 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="ParamName" type="xs:string"/>
+<xs:element minOccurs="0" name="ParamValue" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSSParamList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:20:26 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="SParam" type="UDG:CSSParam"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSSService">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/09/18 10:47:25 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element default="I" name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="EquipID" type="xs:string"/>
+<xs:element minOccurs="0" name="LoginId" type="xs:string"/>
+<xs:element minOccurs="0" name="SerialNo" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SParamList" type="UDG:CSSParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSSServiceList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:20:34 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="SService" type="UDG:CSSService"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSService">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/11/14 13:20:38 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Operation" type="UDG:CSOperation"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CSXMLServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:20:42 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SServiceList" type="UDG:CSSServiceList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Changeprepostpaid">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/12/08 02:34:22 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrType" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" type="xs:string"/>
+<xs:element minOccurs="0" name="pServices" type="UDG:pServices"/>
+<xs:element minOccurs="0" name="pNewsimcard" type="xs:string"/>
+<xs:element name="pNewtarrifprofile" type="xs:long"/>
+<xs:element default="N" minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element default="NULL" minOccurs="0" name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element minOccurs="0" name="pAdditionalparams" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ChangeprepostpaidResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/23 00:05:36 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ChgServiceList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/08/06 08:38:09 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="SService" type="UDG:ChgSrvService"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ChgSrvService">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/08/06 08:50:23 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element default="I" name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="EquipID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LoginId" type="xs:string"/>
+<xs:element minOccurs="0" name="SerialNo" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SParamList" type="UDG:CSSParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ChgSrvXMLServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/08/06 09:02:56 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SServiceList" type="UDG:ChgServiceList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CreateCaseWithActionsResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/16 10:27:01 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="CASEID" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="CreateNewInteractionCaseAction">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/16 10:25:02 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="CreateNewInteractionCreateCaseComment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/04/02 12:16:38 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="COMMENT" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Full comments entered by the User</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:group>
+<xs:complexType name="CreateNewInteractionCreateCaseRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.4 $$Date: 2015/12/03 09:45:37 $</versionStr>
+          <description>
+$Revision: 1.4 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="PRIORITY" type="xs:string"/>
+<xs:element name="SOURCE" type="xs:string"/>
+<xs:element minOccurs="0" name="SERVICENAME" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Service Number (could be set from Service View)</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="AIRTEL_REGION" nillable="true" type="xs:integer"/>
+<xs:element name="AIRTEL_ZONE" nillable="true" type="xs:integer"/>
+<xs:element minOccurs="0" name="NCC_ZONE" nillable="true" type="xs:integer"/>
+<xs:element minOccurs="0" name="STATE" nillable="true" type="xs:integer"/>
+<xs:element minOccurs="0" name="LGA" nillable="true" type="xs:integer"/>
+<xs:element minOccurs="0" name="TOWN" nillable="true" type="xs:string"/>
+<xs:element name="CUST_ACCT" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The customer account to be used for this case</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group maxOccurs="unbounded" minOccurs="0" ref="UDG:CreateNewInteractionCreateCaseWithIssue"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="CreateNewInteractionCreateCaseWithAction">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/16 10:23:59 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ACTIONTYPE" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The action type</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group ref="UDG:CreateNewInteractionCaseAction"/>
+<xs:group ref="UDG:CreateNewInteractionCreateCaseComment"/>
+</xs:sequence>
+</xs:group>
+<xs:group name="CreateNewInteractionCreateCaseWithIssue">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/04/02 10:44:59 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="TYPE" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Issue Type</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="REASON" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Used to attach trouble Structure to Issue Class</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="TROUBLE_DATE" type="xs:dateTime">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Date found on Trouble Issue</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="CONVENIENT_TIME" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Drop Down List in Customer Service and trouble shooting issues</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="CONTACT_NUMBER" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Actual existing Contact number or entered number of 'Other' is selected.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PHONE_NUMBER_TYPE" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>A reference to a contact number type for which the contact has a defined number</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group ref="UDG:CreateNewInteractionCreateCaseComment"/>
+</xs:sequence>
+</xs:group>
+<xs:complexType name="CreateNewSubscriberRequestType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/08 13:41:53 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrType" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" type="xs:string"/>
+<xs:element minOccurs="0" name="pContract" type="xs:string"/>
+<xs:element name="pServices" type="UDG:pServices"/>
+<xs:element minOccurs="0" name="pSimcard" type="xs:string"/>
+<xs:element minOccurs="0" name="pCreateContrno" type="xs:string"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element name="pPrepPost" type="xs:string"/>
+<xs:element name="pTariffProfile" type="xs:string"/>
+<xs:element name="pTitle" type="xs:string"/>
+<xs:element name="pFirstname" type="xs:string"/>
+<xs:element minOccurs="0" name="pBin" type="xs:string"/>
+<xs:element minOccurs="0" name="pSecondname" type="xs:string"/>
+<xs:element minOccurs="0" name="pBinbint" type="xs:string"/>
+<xs:element minOccurs="0" name="pThirdname" type="xs:string"/>
+<xs:element name="pLastname" type="xs:string"/>
+<xs:element name="pCname" type="xs:string"/>
+<xs:element minOccurs="0" name="pArtitle" type="xs:string"/>
+<xs:element minOccurs="0" name="pArfirstname" type="xs:string"/>
+<xs:element minOccurs="0" name="pArbin" type="xs:string"/>
+<xs:element minOccurs="0" name="pArsecondname" type="xs:string"/>
+<xs:element minOccurs="0" name="pArbinbint" type="xs:string"/>
+<xs:element minOccurs="0" name="pArthirdname" type="xs:string"/>
+<xs:element minOccurs="0" name="pArlastname" type="xs:string"/>
+<xs:element minOccurs="0" name="pArcname" type="xs:string"/>
+<xs:element name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element minOccurs="0" name="pNotifySystem" type="xs:string"/>
+<xs:element name="pAdditionalparams" type="UDG:pAdditionalparams"/>
+<xs:element name="pCommitTrans" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CreateNewSubscriberResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/19 20:24:52 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FetchServiceDetails">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/18 14:27:22 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="EFFECTIVE_DATE" type="xs:date">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the service EVS API for identifying effective start date.
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="SERVICE_NAME">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the EVS API.
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="BASE_PRODUCT_INST_ID" type="xs:long"/>
+<xs:element minOccurs="0" name="SERVICE_STATUS_CODE" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="InputParamsInvoice">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:42:35 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="InvoiceList" type="UDG:InvoiceList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="InputParamsPayment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:42:24 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="PaymentList" type="UDG:PaymentList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Invoice">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:44:29 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ArRef" type="xs:string"/>
+<xs:element name="Amount" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="InvoiceList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:44:18 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="Invoice" type="UDG:Invoice"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MSISDNResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:33:50 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="RESULT" type="UDG:MSISDNResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MSISDNResult">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:29:21 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="RETURN_CODE">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Returns 1 on success and Error number on exception</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:long">
+<xs:minExclusive value="1"/>
+<xs:maxExclusive value="80"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="MESSAGE">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Will have Error Message in case of error , for successful request will be defaulted to â&#128;&#152;Successâ&#128;&#153;.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="125"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MSISDNSAFECUSTODY">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/10/04 07:18:48 $</versionStr>
+          <description>MSISDN Safe Custody ED
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pSubNo" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN Number of the subscriber.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pPeriod" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Safe Custody Period  ( in Month )</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MSISDNSAFECUSTODYResponseResult">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/10/04 07:18:54 $</versionStr>
+          <description>Response Result child ED
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="RETURN_CODE" type="xs:long">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Returns 0 on success and Error number on exception</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="MESSAGE" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Will have Error Message in case of error , for successful request will be defaulted to â&#128;&#152;Successâ&#128;&#153;</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="ServiceRequestNumber" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>A Case Id to track this transaction.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MSISDNSAFECUSTODYResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/10/04 07:18:51 $</versionStr>
+          <description>Response Type for Msisdn Safe Custody
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="RESULT" type="UDG:MSISDNSAFECUSTODYResponseResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Operation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/10/20 01:53:19 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="OutputParams" type="UDG:OutputParams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OperationInvoice">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:43:17 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="InputParams" type="UDG:InputParamsInvoice"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OperationPayment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:43:05 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="InputParams" type="UDG:InputParamsPayment"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OrderInterface">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.6 $$Date: 2015/08/20 12:48:40 $</versionStr>
+          <description>
+$Revision: 1.6 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Area code string</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pSubscrType" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Ofer start date from new customer batch loader or from USSD CNS ? field</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pSubNo" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>pSubNo for MSISDN</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pUsername" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Ofer start date from new customer batch loader or from USSD CNS back-date</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pServices" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>PortIn flag</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pAdditionalparams" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Additional parameters to specify more proudct info</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="ContactID" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Contact ID for an existing contact or new contact identified with ContactDetails_M</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="CustAcctID" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Customoer Node ID</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="SelectedProductID" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The Base Product Instance ID is going to be updated.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Title_X" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Subscriber title</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="FirstName_X" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The first name of the subscriber</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="LastName_X" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The last name of the subscriber</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="OfficialName_X" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The full name of the subscriber in English (pCname)</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pSndcmd" type="xs:boolean">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>pSndCmd to indicate requiring provisioning or not</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Type_R" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Order Type Name</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="ProductOffers" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EffectiveStartDate" type="xs:dateTime">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Ofer start date from new customer batch loader or from USSD CNS back-date</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="EffectiveEndDate" type="xs:dateTime">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Ofer start date from new customer batch loader or from USSD CNS ? field</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="ReasonForUpdate" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>New_Fact Description</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="TopLevelOfferID" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Base Offer ID selected (pTariffProfile)</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="PaymentReferenceNumber" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>External recipt number for deposit</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="SimCard" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>IMSI number required for new service, ICCID will be derived based on this IMSI num</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OutboundOperation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/13 20:01:15 $</versionStr>
+          <description>
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="OutputParams" type="UDG:OutboundOutputParams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OutboundOutputParams">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/13 20:01:21 $</versionStr>
+          <description>
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Code" type="xs:string"/>
+<xs:element name="Description" type="xs:string"/>
+<xs:element minOccurs="0" name="ServiceRequestNumber" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OutboundService">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/13 20:01:27 $</versionStr>
+          <description>
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Operation" type="UDG:OutboundOperation"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OutputParams">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/10/20 01:54:20 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Code" type="xs:string"/>
+<xs:element name="Description" type="xs:string"/>
+<xs:element minOccurs="0" name="ServiceRequestNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Payment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:43:39 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="PaymentMode" type="xs:long"/>
+<xs:element minOccurs="0" name="CreditCardCoID" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="CreditCardNum" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="CreditCardExpire" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CreditCardVerifNum" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="ChequeBankCode" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="ChequeBankBranchID" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="ChequeNum" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ChequeIssueDate" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ChequeExpiryDate" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ChequeBankAccId" nillable="true" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PaymentList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:43:28 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Payment" type="UDG:Payment"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ProductInstanceStatusUpdate">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/18 06:36:03 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="EFFECTIVE_DATE" type="xs:dateTime">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the product instance EVS API for identifying the effective start date.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PRODUCT_INSTANCE_ID" type="xs:long"/>
+<xs:element name="PRODUCT_INSTANCE_STATUS_CODE" type="xs:long">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the EVS API.
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="REINSTALLSUBSCRIBERRequestType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.4 $$Date: 2014/11/27 20:31:10 $</versionStr>
+          <description>
+$Revision: 1.4 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The Primary Account Number</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pUsername" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>CB User ID of User creating / updating the Customer</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pServices" nillable="true" type="UDG:pServices"/>
+<xs:element name="pNewsimcard" type="xs:string"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" nillable="true" type="xs:string"/>
+<xs:element default="NULL" minOccurs="0" name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pAdditonalparams" nillable="true" type="UDG:pAdditionalparams"/>
+<xs:element name="pReasoncode" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Billing Priority</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="REINSTALLSUBSCRIBERResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2014/11/27 20:31:14 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RESULT">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/11/03 11:07:40 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="RETURN_CODE" type="xs:integer"/>
+<xs:element name="MESSAGE">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ReConnectbarRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2014/10/31 13:40:31 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" type="UDG:pServices"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="pHlrProfile" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pReasonCode" type="xs:string"/>
+<xs:element name="pAdditonalparams" type="UDG:pAdditonalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ReConnectbarResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 06:21:01 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SParam">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/13 10:48:22 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ParamName" type="xs:string"/>
+<xs:element name="ParamValue" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SParamList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/13 10:48:34 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="SParam" type="UDG:SParam"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SService">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2015/09/18 10:45:44 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Action" type="xs:string"/>
+<xs:element name="EquipID" type="xs:string"/>
+<xs:element minOccurs="0" name="LoginId" type="xs:string"/>
+<xs:element minOccurs="0" name="SerialNo" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SParamList" type="UDG:SParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SServiceList">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/13 10:48:58 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="SService" type="UDG:SService"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Service">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/10/20 01:55:21 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Operation" type="UDG:Operation"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ServiceInvoice">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:42:54 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Operation" type="UDG:OperationInvoice"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ServicePayment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:42:43 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Operation" type="UDG:OperationPayment"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SubscriberStatusUpdateConcrete">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/10/08 08:40:21 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="CUSTOMER_NODE_ID">
+<xs:simpleType>
+<xs:restriction base="xs:long">
+<xs:totalDigits value="15"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Account_Status" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the EVS API.
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="XMLServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/13 10:49:09 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SServiceList" type="UDG:SServiceList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="addressChangeCaseCommentAssoc">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/07/15 05:49:12 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="addressChangeCaseContactAssociation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/15 05:53:14 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="addressChangeCreateCase">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/15 05:57:36 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="addressChangeCreateCaseComment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/15 06:13:16 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:complexType name="addressChangeRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/09/25 04:25:31 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrType" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" type="UDG:pServices"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pAdditionalparams" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addressChangeResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/18 13:24:09 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="barOnSubscriberRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2014/10/31 13:39:04 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" type="UDG:pServices"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="pHlrProfile" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pReasonCode" type="xs:string"/>
+<xs:element name="pAdditonalparams" type="UDG:pAdditonalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="barOnSubscriberResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 06:08:52 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="changeSubscriberStatusCaseContactAssociation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/27 20:28:50 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ContactId" type="xs:integer"/>
+</xs:sequence>
+</xs:group>
+<xs:complexType name="changeSubscriberStatusConcrete">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/11/27 20:28:55 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="CustomerNodeId" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>customer node id</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Customer_Status" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The status of the customer account</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="StartDate" type="xs:dateTime">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Effective Start Date of the Customer Account</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group ref="UDG:changeSubscriberStatusCreateCase"/>
+<xs:group ref="UDG:changeSubscriberStatusCaseContactAssociation"/>
+<xs:group ref="UDG:changeSubscriberStatusCreateCaseComment"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="changeSubscriberStatusCreateCase">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/27 20:28:59 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="changeSubscriberStatusCreateCaseComment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/27 20:29:02 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="CommentFull_M" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Full comments entered by the User</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:group>
+<xs:complexType name="createMSISDNRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:34:43 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="MSISDN">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN Number of the subscriber.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="MSISDN_Pool">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN Pool for the equipement.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Gaining_Operator">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Operator name of the equipment .</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Donar_Operator" type="xs:string"/>
+<xs:element name="Vanity_Category">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createNewInteraction">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.4 $$Date: 2015/04/02 10:41:27 $</versionStr>
+          <description>
+$Revision: 1.4 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pUsername">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="pSubNo">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pAccountNo">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="pTroubleDate" type="xs:dateTime"/>
+<xs:element name="pInteractionType">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="pInteractionMode">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="pReasonCode" type="xs:string"/>
+<xs:element minOccurs="0" name="pDescription">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="pPhoneNumberType" type="xs:string"/>
+<xs:element minOccurs="0" name="pPhoneNumber" type="xs:integer"/>
+<xs:element minOccurs="0" name="pConvenientTime" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createNewInteractionResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2014/10/16 10:29:43 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createSafeCustodyStatus">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/10/04 07:18:39 $</versionStr>
+          <description>Safe custody Status outbound Request API.
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>case id</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Sucess code</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>success text</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createSafeCustodyStatusResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/10/04 07:18:45 $</versionStr>
+          <description>Safe custody Status outbound Response API.
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Return of the response</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="disconnectOnSubscriberRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2015/07/23 07:33:23 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" type="UDG:pChgServices"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="pHlrProfile" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pReasonCode" type="xs:string"/>
+<xs:element name="pAdditonalparams" type="UDG:pAdditonalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="disconnectOnSubscriberResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/13 10:47:15 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchAvailableUsageLimit">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/03/18 12:46:09 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="SUBSCRIBER_NO" type="xs:string"/>
+<xs:element minOccurs="0" name="USAGE_TYPE" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="fetchAvailableUsageLimitDetail">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/03/18 12:49:04 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="USAGE_TYPE" type="xs:string"/>
+<xs:element name="AVAILABLE_USAGE_LIMIT" type="xs:double"/>
+<xs:element name="CURRENCY" type="xs:string"/>
+</xs:sequence>
+</xs:group>
+<xs:group name="fetchAvailableUsageLimitDetails">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/03/18 12:47:11 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:group maxOccurs="999" minOccurs="0" ref="UDG:fetchAvailableUsageLimitDetail"/>
+</xs:sequence>
+</xs:group>
+<xs:complexType name="fetchAvailableUsageLimitResp">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/03/18 12:46:39 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:group minOccurs="0" ref="UDG:fetchAvailableUsageLimitDetails"/>
+<xs:element name="RESULT" type="UDG:RESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchMNPVerificationRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:36:48 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="MSISDN">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN Number of the subscriber.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchMNPVerificationResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:37:37 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Age_On_Network" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Days between activation date and current date</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Identity_Type" nillable="true">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Identity Type of the of Contact associated with Service    
+RT- cam.IDENTITY_TYPE
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Identity_Number" nillable="true">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Identity Number of the Contact associated with Service</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Status">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="30"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="RESULT" type="UDG:MSISDNResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchMSISDNStatusRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:38:22 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="MSISDN">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="80"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchMSISDNStatusResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:39:01 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="Donor_Operator">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="30"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Status">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="30"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="RESULT" type="UDG:MSISDNResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchSubscriberSIMSummary">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/11/02 07:10:07 $</versionStr>
+          <description>External definition to fetch subscirber and SIM detail .
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="MSISDN" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN, Subscriber number.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fetchSubscriberSIMSummaryRes">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/11/03 11:08:52 $</versionStr>
+          <description>Definition of response need to return for getSubscriberSIMSummary API.
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element minOccurs="0" name="ICCID" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The ICCID number of the SIM Card associated with MSISDN</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="CUSTOMER_NAME" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The Subscriberâ&#128;&#153;s Full Name as stored in Singleview</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="IMSI" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The IMSI number of the SIM Card associated with MSISDN</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="CONTRACT_NUMBER" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The Account Number/Name of the Subscriber.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="CONTACT_NAME" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The contact name (Official Name) of the subscriber</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="PRE_POST" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>PREP or POST will be returned
+For Hybrid &amp; Prepaid it will be "PREP"</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="CUSTOMER_NUMBER" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The MSISDN of subscriber, it will be same as coming in request.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="RESULT" type="UDG:RESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="nameChangeCaseCommentAssoc">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/07/27 07:43:53 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="nameChangeContactCaseAssociation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/27 07:46:46 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="nameChangeCreateCase">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 06:24:09 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:group name="nameChangeCreateCaseComment">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/27 07:49:00 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence/>
+</xs:group>
+<xs:complexType name="nameChangeRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/09/25 04:25:27 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrType" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" nillable="true" type="UDG:pServices"/>
+<xs:element name="pTitle" type="xs:string"/>
+<xs:element name="pFirstname" type="xs:string"/>
+<xs:element minOccurs="0" name="pBin" type="xs:string"/>
+<xs:element minOccurs="0" name="pBinbint" type="xs:string"/>
+<xs:element minOccurs="0" name="pSecondname" type="xs:string"/>
+<xs:element minOccurs="0" name="pThirdname" type="xs:string"/>
+<xs:element name="pCname" type="xs:string"/>
+<xs:element name="pLastname" type="xs:string"/>
+<xs:element name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pAdditionalparams" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="nameChangeResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 06:22:32 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="notifyProvisionStatus">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/05/30 14:43:25 $</versionStr>
+          <description>Created for provisioning outbound API for MNP
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="RefId" type="xs:string"/>
+<xs:element name="Msisdn" type="xs:string"/>
+<xs:element name="Message" type="xs:string"/>
+<xs:element name="MessageCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="notifyProvisionStatusResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2016/05/30 14:43:31 $</versionStr>
+          <description>Created for the Notify Provision Status API outbound response
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pAdditionalparams">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/18 14:02:49 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="SParamList" type="UDG:SParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pAdditonalparams">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/18 14:25:14 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="SParamList" type="UDG:SParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pCSAdditionalparams">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:21:42 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="SParamList" type="UDG:CSSParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pCSServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/14 13:21:47 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="XMLServices" type="UDG:CSXMLServices"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pChgServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/08/06 09:03:03 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="XMLServices" type="UDG:ChgSrvXMLServices"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pParamlistXml">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:44:08 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="SParamList" type="UDG:SParamList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/13 10:47:54 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="XMLServices" type="UDG:XMLServices"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="paySubConcrete">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/09/25 11:05:47 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="TO_ACCOUNT_NAME">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="30"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="Amount" type="xs:double">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition for the EVS API.
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Payment_Location" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the EVS API.
+</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Currency" type="xs:long"/>
+<xs:element name="Payment_Type" type="xs:long">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Core attribute type definition used by the payment EVS API for payment type.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PayGeneral1" type="xs:string"/>
+<xs:element minOccurs="0" name="PayGeneral3" type="xs:string"/>
+<xs:element minOccurs="0" name="PayGeneral4" type="xs:string"/>
+<xs:element minOccurs="0" name="PayGeneral5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PayGeneral6" type="xs:string"/>
+<xs:element minOccurs="0" name="PayReceivedDate" type="xs:date"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="paySubscriber">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/09/25 04:25:35 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Area" type="xs:string"/>
+<xs:element name="subscriberType" type="xs:string"/>
+<xs:element name="subNo" type="xs:string"/>
+<xs:element name="Amount" type="xs:double"/>
+<xs:element name="Username" type="xs:string"/>
+<xs:element name="xmlPaymentInfo" type="UDG:xmlPaymentInfo"/>
+<xs:element minOccurs="0" name="Currency" type="xs:string"/>
+<xs:element minOccurs="0" name="PaymentFor" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pPayFutureInvocies" type="xs:string"/>
+<xs:element minOccurs="0" name="pIsdepositrefund" type="xs:string"/>
+<xs:element minOccurs="0" name="pIsadvancepaycontrno" type="xs:string"/>
+<xs:element name="pParamlistXml" nillable="true" type="UDG:pParamlistXml"/>
+<xs:element minOccurs="0" name="xmlInvoicesInfo" nillable="true" type="UDG:xmlInvoicesInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="paySubscriberResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:44:00 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reconnectOnSubscriberRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/09/25 04:25:14 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" nillable="true" type="xs:string"/>
+<xs:element name="pServices" type="UDG:pServices"/>
+<xs:element name="pReasonCode" type="xs:string"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="pHlrProfile" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pAdditonalparams" type="UDG:pAdditonalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reconnectOnSubscriberResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/18 13:59:24 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="terminateOnSubscriberRequestResponseType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.3 $$Date: 2014/11/27 20:31:18 $</versionStr>
+          <description>
+$Revision: 1.3 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="terminateOnSubscriberRequestType">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.4 $$Date: 2014/11/27 20:31:06 $</versionStr>
+          <description>
+$Revision: 1.4 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The Primary Account Number</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pUsername" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>CB User ID of User creating / updating the Customer</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="pServices" type="UDG:pServices"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="pHlrProfile" type="xs:string"/>
+<xs:element minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element name="pReasonCode" type="xs:string"/>
+<xs:element name="pAdditonalparams" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="transferOwnershipRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/19 00:06:39 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element default="0" name="pArea" type="xs:string"/>
+<xs:element default="G" name="pSubscrtype" type="xs:string"/>
+<xs:element name="pSubNo" type="xs:string"/>
+<xs:element name="pUsername" type="xs:string"/>
+<xs:element minOccurs="0" name="pServices" type="UDG:pServices"/>
+<xs:element name="pNewcontract" type="xs:string"/>
+<xs:element default="0" name="pSpecifiedamount" type="xs:integer"/>
+<xs:element minOccurs="0" name="pSubsidyFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="pHlrProfile" nillable="true" type="xs:string"/>
+<xs:element default="Y" minOccurs="0" name="pSndcmd" type="xs:string"/>
+<xs:element minOccurs="0" name="pAdditionalparams" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="transferOwnershipResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/11/19 00:06:44 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:Service"/>
+<xs:element name="Code" type="xs:long"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateContactName">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/27 07:45:04 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Contactid" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 1</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Title" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Title - mapped to CB TITLE and is stored as denormalised in CB</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="FirstName" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>First Name or Given Names</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="LastName" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Last or Family Name</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group ref="UDG:nameChangeCreateCase"/>
+<xs:group ref="UDG:nameChangeContactCaseAssociation"/>
+<xs:group ref="UDG:nameChangeCreateCaseComment"/>
+<xs:group ref="UDG:nameChangeCaseCommentAssoc"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateContactPostalAddress">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/07/23 13:15:14 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Contactid" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 1</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalLine1" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 1</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalLine2" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 2</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Suburb" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 3</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="City" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 4</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="State" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 5</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalPOBox" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>PO Box</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Country" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 6</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalPostCode" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Post Code</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="EmailAddress" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>For CB General Field 1</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="MobilePhone" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Mobile Phone</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="HomePhone" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Home Phone</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group ref="UDG:addressChangeCreateCase"/>
+<xs:group ref="UDG:addressChangeCaseContactAssociation"/>
+<xs:group ref="UDG:addressChangeCreateCaseComment"/>
+<xs:group ref="UDG:addressChangeCaseCommentAssoc"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateCustomerPostAddress">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 07:03:56 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="CustomerNodeId" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>External system unique foreign key</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalLine1" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 1</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalLine2" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 2</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Suburb" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 3</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="City" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 4</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalPOBox" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>PO Box</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="State" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 5</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="Country" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Line 6</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="PostalPostCode" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Postal Post Code</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateMSISDNStatusRequest">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2016/06/01 17:40:08 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="MSISDN">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>MSISDN Number of the subscriber.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="Status">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="Gaining_Operator">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="Donor_Operator">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateService">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/02/11 10:52:42 $</versionStr>
+          <description>Uses for updateService API.
+This is an enhanced ED work with Multiple Offer at the same level.
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="pArea" type="xs:string"/>
+<xs:element name="pSubscrType" type="xs:string"/>
+<xs:element name="ServiceNumber" type="xs:string"/>
+<xs:element name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="EffectiveStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="EffectiveEndDate" type="xs:dateTime"/>
+<xs:element name="pUsername" type="xs:string"/>
+<xs:element name="ReasonForUpdate" type="xs:integer"/>
+<xs:element default="Y" name="pSndcmd" type="xs:string">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>For Provisioning</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="TopLevelOfferID" type="xs:integer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Offers" type="UDG:usOffers"/>
+<xs:element maxOccurs="unbounded" name="Services" type="UDG:usServices"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Attributes" type="UDG:usAttributes"/>
+<xs:element name="pAdditionalparams" type="UDG:pAdditionalparams"/>
+</xs:sequence>
+</xs:complexType>
+<xs:group name="updateServiceCaseContactAssociation">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/06/12 11:52:58 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Contact" type="xs:integer"/>
+</xs:sequence>
+</xs:group>
+<xs:group name="updateServiceCreateCase">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/06/12 11:52:40 $</versionStr>
+          <description>
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Customer_Account_For_Case" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>The customer account to be used for this case</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:group ref="UDG:updateServiceCaseContactAssociation"/>
+</xs:sequence>
+</xs:group>
+<xs:complexType name="updateServiceCreateOrder">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.4 $$Date: 2015/06/12 11:33:04 $</versionStr>
+          <description>
+$Revision: 1.4 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:group ref="UDG:updateServiceCreateCase"/>
+<xs:element default="4" minOccurs="0" name="Type_R" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Type of ordered product.</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element name="SelectedProduct_R" type="xs:integer">
+<xs:annotation>
+<xs:appinfo>
+            <ed:Element>
+              <description>Product to Update</description>
+            </ed:Element>
+          </xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateSimSwapStatus">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/12/09 14:40:35 $</versionStr>
+          <description>Created for the change SIM API outbound request
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="arg0" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="arg1" type="xs:int"/>
+<xs:element maxOccurs="unbounded" name="arg2" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="arg3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateSimSwapStatusNgr">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/10/21 07:59:44 $</versionStr>
+          <description>Created for the change SIM API outbound request
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="updateSimSwapStatus" type="UDG:updateSimSwapStatusNgrComp"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateSimSwapStatusNgrComp">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/10/21 07:59:54 $</versionStr>
+          <description>Created for the change SIM API outbound request
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="arg0" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="arg1" type="xs:int"/>
+<xs:element maxOccurs="unbounded" name="arg2" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="arg3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateSimSwapStatusNgrResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/10/21 08:00:04 $</versionStr>
+          <description>Created for the change SIM API outbound response
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="updateSimSwapStatusResult" type="UDG:updateSimSwapStatusResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateSimSwapStatusResponse">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2014/12/09 14:40:39 $</versionStr>
+          <description>Created for the change SIM API outbound response
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateSimSwapStatusResult">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/10/21 08:00:20 $</versionStr>
+          <description>Created for the change SIM API outbound response
+
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="usAttributes">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/02/06 03:57:55 $</versionStr>
+          <description>Uses for updateService API - Attributes
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="AttributeName" type="xs:string"/>
+<xs:element name="AttributeValue" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="usOffers">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2015/02/06 03:58:02 $</versionStr>
+          <description>Uses for updateService API - Product Offer
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="OfferID" type="xs:integer"/>
+<xs:element name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="ParentOfferID" type="xs:integer"/>
+<xs:element minOccurs="0" name="QuantityRequired" type="xs:integer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Products" type="UDG:usProducts"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="usProducts">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/02/11 10:52:51 $</versionStr>
+          <description>Uses for updateService API - Companion Product
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ProductID" type="xs:integer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Attributes" type="UDG:usAttributes"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="usServices">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.2 $$Date: 2015/02/11 10:53:00 $</versionStr>
+          <description>Uses for updateService API - Services
+$Revision: 1.2 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ServiceTypeID" type="xs:integer"/>
+<xs:element name="Action" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Attributes" type="UDG:usAttributes"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="xmlInvoicesInfo">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:44:56 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:ServiceInvoice"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="xmlPaymentInfo">
+<xs:annotation>
+<xs:appinfo>
+        <ed:Defn>
+          <versionStr>$Revision: 1.1 $$Date: 2014/09/17 08:45:07 $</versionStr>
+          <description>
+$Revision: 1.1 $</description>
+        </ed:Defn>
+      </xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="Service" type="UDG:ServicePayment"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

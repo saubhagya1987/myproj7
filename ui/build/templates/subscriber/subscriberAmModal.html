@@ -1,0 +1,128 @@
+<div class="row">
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Nationality" | translate}} <span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].nationality.countryName"></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-lg-4" ng-hide="true">
+			<div class="form-group">
+				<label>{{"Country of Origin" | translate}} <span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].address.countryId.countryName"></p>
+			</div>
+		</div>] -->
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Place of Birth" | translate}} <span class="mandatory">*</span></label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].placeOfBirth"></p>
+			</div>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>{{"Subscriber ID" | translate}}</legend>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Id Type" | translate}} <span class="mandatory">*</span></label> 
+				<select class="form-control"
+					name="idType" ng-change="checkIdAvailable(addSubscriberObj.subscriberData.subscriberDetails[0].subscriberIdDetails[0].idType)"
+					ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].subscriberIdDetails[0].idType"
+					required="required" ng-options="id.id_desc as id.id_name for id in ids | filter:shouldShow">
+					<option value=" ">--: {{"Select" | translate}}:--</option>
+				</select>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idType.$touched">
+					<span ng-show="subscriberForm.idType.$error.required"
+						class="mandatory">{{"Please select ID type" | translate}}</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Id Number" | translate}} <span class="mandatory">*</span></label> 
+					<input minlength="3" maxlength="20"
+					class="form-control" name="idNumber" id="idNumber" ng-required="idNoRequired"
+					ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].subscriberIdDetails[0].idNumber"
+					placeholder="{{'Enter id number' | translate}}">
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idNumber.$touched">
+					<span ng-show="subscriberForm.idNumber.$error.required"
+						class="mandatory">{{'Please enter identification number' | translate }}</span>
+					<span ng-show="subscriberForm.idNumber.$error.minlength "
+					class="mandatory">{{'Minimum characters in id number is :' | translate}}3</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Create Airtel Money A/c?" | translate }}</label>
+				<p class="form-control" disabled ng-bind="addSubscriberObj.subscriberData.subscriberDetails[0].amAccount"></p>
+			</div>
+		</div>
+		<!-- <div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Create Airtel Money A/c?" | translate}} <span class="mandatory">*</span></label> 
+				 <select class="form-control" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].amAccount" name="amAccount">
+				 	<option value="Yes">YES</option>
+				 	<option value="No">NO</option>
+				 </select>													
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.amAccount.$touched">
+					<span ng-show="subscriberForm.amAccount.$error.required"
+						class="mandatory">{{"Do You Want To Create Airtel Money A/c" | translate}}.</span>
+				</p>
+			</div>
+		</div> -->
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"Id front Image" | translate}}  <span class="mandatory">*</span></label>
+				<input id="idFront"
+					class="form-control" type="file" filevalid name="idFront" accept="image/png,image/jpeg,image/jpg" base-sixty-four-input ng-model="imagesObject.idFront">
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idFront.$touched">
+					<span ng-show="subscriberForm.idFront.$error.accept"
+						class="mandatory">{{'Only jpeg/png files are supported' | translate }}</span>
+					<span ng-show="subscriberForm.idFront.$error.filevalid"
+						class="mandatory">{{'file name is not valid' | translate }}</span>
+				</p>
+				<img id="idFrontImg" crossOrigin="Anonymous" class="block imgSmall" src="{{imagesObject.idFrontPath}}" />
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"Id back Image" | translate}}  <span class="mandatory">*</span></label>
+				<input id="idBack"
+					class="form-control" type="file" filevalid name="idBack" accept="image/png,image/jpeg,image/jpg" base-sixty-four-input ng-model="imagesObject.idBack">
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.idBack.$touched">
+					<span ng-show="subscriberForm.idBack.$error.accept"
+						class="mandatory">{{'Only jpeg/png files are supported' | translate }}</span>
+					<span ng-show="subscriberForm.idBack.$error.filevalid"
+						class="mandatory">{{'file name is not valid' | translate }}</span>
+				</p>
+				<img id="idBackImg" crossOrigin="Anonymous" class="block imgSmall" src="{{imagesObject.idBackPath}}" />
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"Id physical form" | translate}}  <span class="mandatory">*</span></label>
+				<input id="physicalFormId"
+					class="form-control ng-hide" type="file" filevalid name="physicalFormId" accept="image/png,image/jpeg,image/jpg"
+					 base-sixty-four-input ng-model="imagesObject.physicalFormId">
+				<img id="physicalFormIdImg" crossOrigin="Anonymous" class="block imgSmall" src="{{imagesObject.idPhysicalFormPath}}" />
+			</div>
+		</div>
+	</div>
+</fieldset>
+<div class="row">
+	<div class="form-group text-right col-md-12 margin-top-25">
+		<input type="submit" class="btn btn-danger"
+			 value="{{'Submit' | translate}}" ng-disabled="submitDisabled"/>
+	</div>
+</div>

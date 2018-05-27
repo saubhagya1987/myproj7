@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="user-reports" pageWidth="876" pageHeight="842" columnWidth="836" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1415fb9-88ea-444e-a2ed-c985d3604012">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="alternating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2!=0]]></conditionExpression>
+			<style backcolor="#AAD7F8"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#C5E2F7"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="start_date" class="java.util.Date"/>
+	<parameter name="end_date" class="java.util.Date"/>
+	<parameter name="user_name_h" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[{call SND_RBM_CP_REPORT($P{start_date},$P{end_date},$P{user_name_h},$P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="CP_NAME" class="java.lang.String"/>
+	<field name="MTD_TOTAL" class="java.math.BigDecimal"/>
+	<field name="LMTD_TOTAL" class="java.math.BigDecimal"/>
+	<field name="GROWTH" class="java.math.BigDecimal"/>
+	<field name="GROWTH_PERCENT" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4bf205c4-fb8d-4299-ba32-d7165a5c2f14" x="279" y="5" width="277" height="42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Channel Performance]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bf36a119-ce1c-460b-a718-46ce2db90beb" mode="Opaque" x="200" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Channel Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d97153f-f464-4015-ad3e-8f11ff94483b" mode="Opaque" x="292" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MTD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="752e1a7c-c132-416d-8d29-eab32e7790e5" mode="Opaque" x="385" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LMTD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b08aab21-ebc4-4530-8ac5-cf0c2f6825a2" mode="Opaque" x="478" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Growth(#)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="542216a4-6e60-4eed-ae1b-b6db37764761" mode="Opaque" x="571" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Growth(%)]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="74514aa5-0381-4ce8-9e09-caf60d8941ad" x="292" y="1" width="1" height="38" forecolor="#FFFFFF"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="7965e43e-b0a9-4464-bcaa-47967d9e9655" x="198" y="0" width="93" height="25"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CP_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bb9fd0bb-2db4-4a23-9cca-4b1343e09bd3" x="291" y="0" width="93" height="25"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MTD_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5fa43430-e17c-4f3b-8de6-1b7923a11db5" x="384" y="0" width="93" height="25"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LMTD_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="727836ba-25ac-4383-a0dd-f4a7f82e4f2c" x="478" y="0" width="93" height="25"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{GROWTH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6c3773d9-252c-441d-94f9-59e7687a8b9c" x="570" y="0" width="93" height="25"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{GROWTH_PERCENT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

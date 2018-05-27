@@ -1,0 +1,569 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://api.comviva.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="MobServiceAPIService" targetNamespace="http://api.comviva.com">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tresoap.intecbilling.com/fault/2.0" targetNamespace="http://tresoap.intecbilling.com/fault/2.0" version="1.0">
+<xs:element name="ConnectionFault" nillable="true" type="tns:ConnectionFaultDetail"/>
+<xs:complexType name="ConnectionFaultDetail">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="Message" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ErrorId" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tresoap.intecbilling.com/2.0/AirtelMoney" xmlns:ns1="http://services.comviva.com" elementFormDefault="qualified" targetNamespace="http://tresoap.intecbilling.com/2.0/AirtelMoney" version="1.0">
+<xs:import namespace="http://services.comviva.com"/>
+<xs:element name="storePINResetRequestType_UpdateRequest" nillable="true" type="tns:storePINResetRequestType"/>
+<xs:element name="storePINResetRequestType_UpdateResponse" nillable="true" type="tns:storePINResetResponseType"/>
+<xs:complexType name="BlockServiceRequest">
+<xs:sequence>
+<xs:element name="MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="SERVICE" nillable="true" type="xs:string"/>
+<xs:element name="TYPE" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="BlockServiceResponse">
+<xs:sequence>
+<xs:element name="ERRCODE" nillable="true" type="xs:string"/>
+<xs:element name="MESSAGE" nillable="true" type="xs:string"/>
+<xs:element name="MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="TYPE" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ModificationRequest">
+<xs:sequence>
+<xs:element name="ACCOUNTNUMBER" nillable="true" type="xs:string"/>
+<xs:element name="ACCOUNTTYPE" nillable="true" type="xs:string"/>
+<xs:element name="ADDRESS" nillable="true" type="xs:string"/>
+<xs:element name="ADDRESSPROOF" nillable="true" type="xs:string"/>
+<xs:element name="APIPASSWORD" nillable="true" type="xs:string"/>
+<xs:element name="APIUSERNAME" nillable="true" type="xs:string"/>
+<xs:element name="BIRTHPLACE" nillable="true" type="xs:string"/>
+<xs:element name="CITY" nillable="true" type="xs:string"/>
+<xs:element name="CONTACT_NUMBER" nillable="true" type="xs:string"/>
+<xs:element name="COUNTRY" nillable="true" type="xs:string"/>
+<xs:element name="CUSTOMERID" nillable="true" type="xs:string"/>
+<xs:element name="DISTRICT" nillable="true" type="xs:string"/>
+<xs:element name="DOB" nillable="true" type="xs:string"/>
+<xs:element name="EMPLOYERNAME" nillable="true" type="xs:string"/>
+<xs:element name="EXPIREDDATE" nillable="true" type="xs:string"/>
+<xs:element name="FNAME" nillable="true" type="xs:string"/>
+<xs:element name="FORMNUMBER" nillable="true" type="xs:string"/>
+<xs:element name="GENDER" nillable="true" type="xs:string"/>
+<xs:element name="ICCID" nillable="true" type="xs:string"/>
+<xs:element name="IDENTIFICATION_NUMBER" nillable="true" type="xs:string"/>
+<xs:element name="IDENTITYPROOF" nillable="true" type="xs:string"/>
+<xs:element name="IDEXPIRED" nillable="true" type="xs:string"/>
+<xs:element name="IDNUMBER" nillable="true" type="xs:string"/>
+<xs:element name="IDTYPE" nillable="true" type="xs:string"/>
+<xs:element name="ISSUEDDATE" nillable="true" type="xs:string"/>
+<xs:element name="ISSUED_COUNTRYCODE" nillable="true" type="xs:string"/>
+<xs:element name="IS_MSISDN_ACTIVATED" nillable="true" type="xs:string"/>
+<xs:element name="LANGUAGE" nillable="true" type="xs:string"/>
+<xs:element name="LNAME" nillable="true" type="xs:string"/>
+<xs:element name="MIDDLENAME" nillable="true" type="xs:string"/>
+<xs:element name="MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="NATIONALITY" nillable="true" type="xs:string"/>
+<xs:element name="NICKNAME" nillable="true" type="xs:string"/>
+<xs:element name="OFFNET_MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="PHOTOPROOF" nillable="true" type="xs:string"/>
+<xs:element name="PLACEOF_ID_ISSUED" nillable="true" type="xs:string"/>
+<xs:element name="POSTALCODE" nillable="true" type="xs:string"/>
+<xs:element name="POSTPAIDINTEGRATION" nillable="true" type="xs:string"/>
+<xs:element name="PRIMARYACCOUNT" nillable="true" type="xs:string"/>
+<xs:element name="REGION" nillable="true" type="xs:string"/>
+<xs:element name="REGTYPEID" nillable="true" type="xs:string"/>
+<xs:element name="RESIDENCYCOUNTRYCODE" nillable="true" type="xs:string"/>
+<xs:element name="STATE" nillable="true" type="xs:string"/>
+<xs:element name="STATUS" nillable="true" type="xs:string"/>
+<xs:element name="TYPE" nillable="true" type="xs:string"/>
+<xs:element name="WALLETTYPE" nillable="true" type="xs:string"/>
+<xs:element name="NamePrefix" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ModificationResponse">
+<xs:sequence>
+<xs:element name="ERRCODE" nillable="true" type="xs:string"/>
+<xs:element name="MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="TYPE" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RegistrationRequest">
+<xs:sequence>
+<xs:element name="ACCOUNTNUMBER" nillable="true" type="xs:string"/>
+<xs:element name="ACCOUNTTYPE" nillable="true" type="xs:string"/>
+<xs:element name="ADDRESS" nillable="true" type="xs:string"/>
+<xs:element name="ADDRESSPROOF" nillable="true" type="xs:string"/>
+<xs:element name="APIPASSWORD" nillable="true" type="xs:string"/>
+<xs:element name="APIUSERNAME" nillable="true" type="xs:string"/>
+<xs:element name="BIRTHPLACE" nillable="true" type="xs:string"/>
+<xs:element name="CITY" nillable="true" type="xs:string"/>
+<xs:element name="CONTACT_NUMBER" nillable="true" type="xs:string"/>
+<xs:element name="COUNTRY" nillable="true" type="xs:string"/>
+<xs:element name="CUSTOMERID" nillable="true" type="xs:string"/>
+<xs:element name="DISTRICT" nillable="true" type="xs:string"/>
+<xs:element name="DOB" nillable="true" type="xs:string"/>
+<xs:element name="EMPLOYERNAME" nillable="true" type="xs:string"/>
+<xs:element name="EXPIREDDATE" nillable="true" type="xs:string"/>
+<xs:element name="FNAME" nillable="true" type="xs:string"/>
+<xs:element name="FORMNUMBER" nillable="true" type="xs:string"/>
+<xs:element name="GENDER" nillable="true" type="xs:string"/>
+<xs:element name="ICCID" nillable="true" type="xs:string"/>
+<xs:element name="IDENTIFICATION_NUMBER" nillable="true" type="xs:string"/>
+<xs:element name="IDENTITYPROOF" nillable="true" type="xs:string"/>
+<xs:element name="IDEXPIRED" nillable="true" type="xs:string"/>
+<xs:element name="IDNUMBER" nillable="true" type="xs:string"/>
+<xs:element name="IDTYPE" nillable="true" type="xs:string"/>
+<xs:element name="ISSUEDDATE" nillable="true" type="xs:string"/>
+<xs:element name="ISSUED_COUNTRYCODE" nillable="true" type="xs:string"/>
+<xs:element name="IS_MSISDN_ACTIVATED" nillable="true" type="xs:string"/>
+<xs:element name="LANGUAGE" nillable="true" type="xs:string"/>
+<xs:element name="LNAME" nillable="true" type="xs:string"/>
+<xs:element name="MIDDLENAME" nillable="true" type="xs:string"/>
+<xs:element name="MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="NATIONALITY" nillable="true" type="xs:string"/>
+<xs:element name="NICKNAME" nillable="true" type="xs:string"/>
+<xs:element name="OFFNET_MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="PHOTOPROOF" nillable="true" type="xs:string"/>
+<xs:element name="PLACEOF_ID_ISSUED" nillable="true" type="xs:string"/>
+<xs:element name="POSTALCODE" nillable="true" type="xs:string"/>
+<xs:element name="POSTPAIDINTEGRATION" nillable="true" type="xs:string"/>
+<xs:element name="PRIMARYACCOUNT" nillable="true" type="xs:string"/>
+<xs:element name="REGION" nillable="true" type="xs:string"/>
+<xs:element name="REGTYPEID" nillable="true" type="xs:string"/>
+<xs:element name="RESIDENCYCOUNTRYCODE" nillable="true" type="xs:string"/>
+<xs:element name="STATE" nillable="true" type="xs:string"/>
+<xs:element name="STATUS" nillable="true" type="xs:string"/>
+<xs:element name="TYPE" nillable="true" type="xs:string"/>
+<xs:element name="WALLETTYPE" nillable="true" type="xs:string"/>
+<xs:element name="NamePrefix" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RegistrationResponse">
+<xs:sequence>
+<xs:element name="ERRCODE" nillable="true" type="xs:string"/>
+<xs:element name="MSISDN" nillable="true" type="xs:string"/>
+<xs:element name="TYPE" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GHprovisionNewCustomerDetailsFetch">
+<xs:sequence>
+<xs:choice maxOccurs="unbounded" minOccurs="0">
+<xs:element name="STATUS" type="xs:integer"/>
+<xs:element name="NEW_SUBSCRIPTION_NO" type="xs:string"/>
+<xs:element name="CITY" type="xs:string"/>
+<xs:element name="GENDER" type="xs:string"/>
+<xs:element name="FIRST_NAME" type="xs:string"/>
+<xs:element name="Product_R" type="xs:integer"/>
+<xs:element name="NATIONALITY" type="xs:string"/>
+<xs:element name="CUSTOMERID" type="xs:integer"/>
+<xs:element name="BIRTHPLACE" type="xs:string"/>
+<xs:element name="SERVICE_TYPE" type="xs:string"/>
+<xs:element name="SPOKEN_LANGUAGE" type="xs:string"/>
+<xs:element name="EquipType" type="xs:integer"/>
+<xs:element name="TARIFF_PROFILE" type="xs:integer"/>
+<xs:element name="NEW_ACCOUNT_NO" type="xs:string"/>
+<xs:element name="CUSTTYPE" type="xs:string"/>
+<xs:element name="LINE_1" type="xs:string"/>
+<xs:element name="PARENT_ACCOUNT_NO" type="xs:integer"/>
+<xs:element name="EMPLOYERNAME" type="xs:string"/>
+<xs:element name="LAST_NAME" type="xs:string"/>
+<xs:element name="ObjectKey" type="xs:integer"/>
+<xs:element name="STATE" type="xs:string"/>
+<xs:element name="LINE_2" type="xs:string"/>
+<xs:element name="REGTYPEID" type="xs:integer"/>
+<xs:element name="TITLE" type="xs:string"/>
+<xs:element name="CONTACTID" type="xs:integer"/>
+<xs:element name="NEW_SIM" type="xs:string"/>
+<xs:element name="ICCID" type="xs:string"/>
+<xs:element name="WORK" type="tns:provisionNewCustomerWorkAddFetch"/>
+<xs:element name="ADDRESS_CONTACT_ID" type="xs:integer"/>
+<xs:element name="IDNUMBER" type="xs:string"/>
+<xs:element name="IDTYPE" type="xs:string"/>
+<xs:element name="POST_CODE" type="xs:string"/>
+<xs:element name="CUSTSTATUS" type="xs:string"/>
+<xs:element name="SUBURB" type="xs:string"/>
+<xs:element name="COUNTRY" type="xs:string"/>
+<xs:element name="EQUIP_SIM" type="xs:string"/>
+<xs:element name="BIRTHDATE" type="xs:anySimpleType"/>
+<xs:element name="FULL_NAME" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="storePINResetRequestType">
+<xs:sequence>
+<xs:element name="MSISDN" type="xs:string"/>
+<xs:element minOccurs="0" name="IMSI" type="xs:string"/>
+<xs:element name="PIN_RESET_DATE" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="blockServiceRequestRESULT">
+<xs:sequence>
+<xs:element name="TYPE" type="xs:string"/>
+<xs:element name="MSISDN" type="xs:string"/>
+<xs:element name="ERRCODE" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="storePINResetUpdateSIM">
+<xs:sequence>
+<xs:element name="MSISDN" type="xs:string"/>
+<xs:element name="IMSI" type="xs:string"/>
+<xs:element name="PIN_RESET_DATE" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GHloopbackprovisionNewCustomerRequest">
+<xs:sequence>
+<xs:element name="COMMAND" type="ns1:GHprovisionNewCustomerOutboundDATA"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBalanceRes">
+<xs:sequence>
+<xs:element name="TYPE" type="xs:string"/>
+<xs:element name="MSISDN" type="xs:string"/>
+<xs:element name="BALANCE" type="xs:decimal"/>
+<xs:element minOccurs="0" name="COMWBALANCE" type="xs:decimal"/>
+<xs:element minOccurs="0" name="WALL3BALANCE" type="xs:decimal"/>
+<xs:element minOccurs="0" name="WALL4BALANCE" type="xs:decimal"/>
+<xs:element minOccurs="0" name="LASTPINRESET" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="STATUS" type="xs:integer"/>
+<xs:element minOccurs="0" name="ERRCODE" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBalance">
+<xs:sequence>
+<xs:element name="TYPE" type="xs:string"/>
+<xs:element name="MSISDN" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GHprovisionNewCustomerOutboundRESULT">
+<xs:sequence>
+<xs:element default="REGIST" minOccurs="0" name="TYPE" type="xs:string"/>
+<xs:element default="MSISDN" minOccurs="0" name="MSISDN" type="xs:string"/>
+<xs:element default="200" minOccurs="0" name="ERRCODE" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GHprovisionNewCustomerOutboundResponse">
+<xs:sequence>
+<xs:element name="registrationReturn" type="tns:GHprovisionNewCustomerOutboundRESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GHprovisionNewCustomerOutboundRequest">
+<xs:sequence>
+<xs:element name="registrationRequest" type="ns1:GHprovisionNewCustomerOutboundDATA"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="blockServiceOutboundResponse">
+<xs:sequence>
+<xs:element name="blockServiceReturn" type="tns:blockServiceRequestRESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="provisionNewCustomerDetailsFetch">
+<xs:sequence>
+<xs:choice maxOccurs="unbounded" minOccurs="0">
+<xs:element name="TARIFF_PROFILE" type="xs:integer"/>
+<xs:element name="LINE_1" type="xs:string"/>
+<xs:element name="LINE_2" type="xs:string"/>
+<xs:element name="SERVICE_TYPE" type="xs:string"/>
+<xs:element name="POST_CODE" type="xs:string"/>
+<xs:element name="FULL_NAME" type="xs:string"/>
+<xs:element name="CITY" type="xs:string"/>
+<xs:element name="STATE" type="xs:string"/>
+<xs:element name="Product_R" type="xs:integer"/>
+<xs:element name="NEW_SIM" type="xs:string"/>
+<xs:element name="SUBURB" type="xs:string"/>
+<xs:element name="STATUS" type="xs:integer"/>
+<xs:element name="TITLE" type="xs:string"/>
+<xs:element name="NEW_ACCOUNT_NO" type="xs:string"/>
+<xs:element name="FIRST_NAME" type="xs:string"/>
+<xs:element name="CONTACTID" type="xs:integer"/>
+<xs:element name="ADDRESS_CONTACT_ID" type="xs:integer"/>
+<xs:element name="PARENT_ACCOUNT_NO" type="xs:integer"/>
+<xs:element name="LAST_NAME" type="xs:string"/>
+<xs:element name="WORK" type="tns:provisionNewCustomerWorkAddFetch"/>
+<xs:element name="NEW_SUBSCRIPTION_NO" type="xs:string"/>
+<xs:element name="COUNTRY" type="xs:string"/>
+</xs:choice>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="provisionNewCustomerWorkAddFetch">
+<xs:sequence>
+<xs:element name="ADDRESS_CONTACT_ID" type="xs:integer"/>
+<xs:element minOccurs="0" name="LINE_1" type="xs:string"/>
+<xs:element minOccurs="0" name="LINE_2" type="xs:string"/>
+<xs:element minOccurs="0" name="SUBURB" type="xs:string"/>
+<xs:element minOccurs="0" name="CITY" type="xs:string"/>
+<xs:element minOccurs="0" name="POST_CODE" type="xs:string"/>
+<xs:element minOccurs="0" name="STATE" type="xs:string"/>
+<xs:element minOccurs="0" name="COUNTRY" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="storePINResetResponseType">
+<xs:sequence>
+<xs:element name="RESULT" type="tns:storePINResetResponse.RESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="storePINResetResponse.RESULT">
+<xs:sequence>
+<xs:element name="RETURN_CODE" type="xs:integer"/>
+<xs:element minOccurs="0" name="RETURN_MESSAGE" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="provisionNewCustomerOutboundDATA">
+<xs:sequence>
+<xs:element name="NEW_ACCOUNT_NO" type="xs:string"/>
+<xs:element name="SERVICE_TYPE" type="xs:string"/>
+<xs:element minOccurs="0" name="EFFECTIVE_DATE" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TITLE" type="xs:string"/>
+<xs:element name="FIRST_NAME" type="xs:string"/>
+<xs:element minOccurs="0" name="FULL_NAME" type="xs:string"/>
+<xs:element name="LAST_NAME" type="xs:string"/>
+<xs:element name="ADDRS_AREA" type="tns:ADDRS_AREA"/>
+<xs:element minOccurs="0" name="PARENT_ACCOUNT_NO" type="xs:string"/>
+<xs:element name="NEW_SIM" type="xs:string"/>
+<xs:element name="NEW_SUBSCRIPTION_NO" type="xs:string"/>
+<xs:element name="TARIFF_PROFILE" type="xs:unsignedLong"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ADDRS_AREA">
+<xs:sequence>
+<xs:element name="HOME" type="tns:HOME_ADDRS_AREA"/>
+<xs:element name="WORK" type="tns:WORK_ADDRS_AREA"/>
+<xs:element name="POSTAL" type="tns:POSTAL_ADDRS_AREA"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="HOME_ADDRS_AREA">
+<xs:sequence>
+<xs:element name="LINE_1" type="xs:string"/>
+<xs:element name="LINE_2" type="xs:string"/>
+<xs:element name="SUBURB" type="xs:string"/>
+<xs:element name="CITY" type="xs:string"/>
+<xs:element name="POST_CODE" type="xs:string"/>
+<xs:element name="STATE" type="xs:string"/>
+<xs:element name="COUNTRY" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="WORK_ADDRS_AREA">
+<xs:sequence>
+<xs:element name="LINE_1" type="xs:string"/>
+<xs:element name="LINE_2" type="xs:string"/>
+<xs:element name="SUBURB" type="xs:string"/>
+<xs:element name="CITY" type="xs:string"/>
+<xs:element name="POST_CODE" type="xs:string"/>
+<xs:element name="STATE" type="xs:string"/>
+<xs:element name="COUNTRY" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="POSTAL_ADDRS_AREA">
+<xs:sequence>
+<xs:element name="LINE_1" type="xs:string"/>
+<xs:element name="LINE_2" type="xs:string"/>
+<xs:element name="SUBURB" type="xs:string"/>
+<xs:element name="CITY" type="xs:string"/>
+<xs:element name="POST_CODE" type="xs:string"/>
+<xs:element name="STATE" type="xs:string"/>
+<xs:element name="COUNTRY" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="changeIMSIOutboundResponseType.RESULT">
+<xs:sequence>
+<xs:element name="RETURN_CODE" type="xs:integer"/>
+<xs:element minOccurs="0" name="RETURN_MESSAGE" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="provisionNewCustomerOutboundResponse">
+<xs:sequence>
+<xs:element name="RESULT" type="tns:provisionNewCustomerOutboundRESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="provisionNewCustomerOutboundRESULT">
+<xs:sequence>
+<xs:element name="RETURN_CODE" type="xs:integer"/>
+<xs:element minOccurs="0" name="MESSAGE" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="changeIMSIOutboundRequestType">
+<xs:sequence>
+<xs:element name="MSISDN" type="xs:string"/>
+<xs:element name="OLD_SIM" type="xs:string"/>
+<xs:element name="NEW_SIM" type="xs:string"/>
+<xs:element name="EFFECTIVE_DATE" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="changeIMSIOutboundResponseType">
+<xs:sequence>
+<xs:element name="NotifySIMSwapResult" type="tns:changeIMSIOutboundResponseType.RESULT"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="provisionNewCustomerOutboundRequest">
+<xs:sequence>
+<xs:element name="DATA" type="tns:provisionNewCustomerOutboundDATA"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://services.comviva.com" version="1.0">
+<xs:complexType name="blockServiceRequestDATA">
+<xs:sequence>
+<xs:element form="qualified" name="TYPE" type="xs:string"/>
+<xs:element form="qualified" name="SERVICE" type="xs:string"/>
+<xs:element form="qualified" name="MSISDN" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GHprovisionNewCustomerOutboundDATA">
+<xs:sequence>
+<xs:element form="qualified" name="TYPE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="NamePrefix" type="xs:string"/>
+<xs:element form="qualified" name="MSISDN" type="xs:string"/>
+<xs:element form="qualified" name="FNAME" type="xs:string"/>
+<xs:element form="qualified" name="LNAME" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="IDENTIFICATION_NUMBER" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="FORMNUMBER" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="DOB" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="GENDER" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ADDRESS" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="DISTRICT" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="CITY" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="STATE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="COUNTRY" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="LANGUAGE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="IDENTITYPROOF" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ADDRESSPROOF" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="PHOTOPROOF" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="PRIMARYACCOUNT" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="CUSTOMERID" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ACCOUNTNUMBER" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ACCOUNTTYPE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="MSISDN2" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="WALLETTYPE_LINKEDBANK" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="STATUS" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="MIDDLENAME" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="NATIONALITY" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="IDTYPE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="IDNUMBER" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="PLACEOF_ID_ISSUED" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ISSUED_COUNTRYCODE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="RESIDENCYCOUNTRYCODE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ISSUEDDATE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="IDEXPIRED" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="EXPIREDDATE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="POSTALCODE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="EMPLOYERNAME" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="BIRTHPLACE" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="REGION" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="NICKNAME" type="xs:string"/>
+<xs:element form="qualified" name="REGTYPEID" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="ICCID" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://tresoap.intecbilling.com/2.0/AirtelMoney" elementFormDefault="qualified" targetNamespace="http://api.comviva.com" version="1.0">
+<xs:import namespace="http://tresoap.intecbilling.com/2.0/AirtelMoney"/>
+<xs:element name="blockService">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="blockServiceRequest" type="ns1:BlockServiceRequest"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="blockServiceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="blockServiceReturn" type="ns1:BlockServiceResponse"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="modification">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="modificationRequest" type="ns1:ModificationRequest"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="modificationResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="modificationReturn" type="ns1:ModificationResponse"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="registration">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="registrationRequest" type="ns1:RegistrationRequest"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="registrationResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="registrationReturn" type="ns1:RegistrationResponse"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="blockService">
+<wsdl:part element="tns:blockService" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="modification">
+<wsdl:part element="tns:modification" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="registrationResponse">
+<wsdl:part element="tns:registrationResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="blockServiceResponse">
+<wsdl:part element="tns:blockServiceResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="registration">
+<wsdl:part element="tns:registration" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="modificationResponse">
+<wsdl:part element="tns:modificationResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="MobServiceAPI">
+<wsdl:operation name="blockService">
+<wsdl:input message="tns:blockService" name="blockService"></wsdl:input>
+<wsdl:output message="tns:blockServiceResponse" name="blockServiceResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="modification">
+<wsdl:input message="tns:modification" name="modification"></wsdl:input>
+<wsdl:output message="tns:modificationResponse" name="modificationResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="registration">
+<wsdl:input message="tns:registration" name="registration"></wsdl:input>
+<wsdl:output message="tns:registrationResponse" name="registrationResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="MobServiceAPIServiceSoapBinding" type="tns:MobServiceAPI">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="blockService">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="blockService">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="blockServiceResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="modification">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="modification">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="modificationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="registration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="registration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="registrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="MobServiceAPIService">
+<wsdl:port binding="tns:MobServiceAPIServiceSoapBinding" name="MobServiceAPIPort">
+<soap:address location="http://172.26.162.100:7550/MobServiceAPI/services/MobServiceAPI"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

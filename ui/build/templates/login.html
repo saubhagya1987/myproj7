@@ -1,0 +1,169 @@
+<nav class="navbar navbar-default whiteBack">
+	<div class=container-fluid>
+		<a class="navbar-brand" href="">
+		    <img src="assets/images/logo.png" width="80" alt="">
+		</a>
+		<ul class="nav navbar-top-links navbar-right">
+			<li class=dropdown><a class="dropdown-toggle myHover" data-toggle=dropdown >{{selectedLanguage}} <i class="fa fa-language fa-fw"
+					style="cursor: pointer"></i> <i class="fa fa-caret-down"
+					style="cursor: pointer"></i></a>
+				<ul class="dropdown-menu dropdown-language">
+					<li ng-show="selectedLanguage == 'Swahili'"><a
+						ng-click="changeLanguage('en')"><i class></i> English</a></li>
+					<li ng-show="selectedLanguage == 'English'"><a
+						ng-click="changeLanguage('sw')"><i class></i> Swahili</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+<div class=container>
+	<div class="panel panel-default col-md-6 col-md-offset-3 noPadding">
+			<div class="panel panel-heading">
+				<div class="panel-title text-center">
+					<h3 style="margin: 0px;">{{'Login' | translate}}</span>
+				</div>
+			</div>
+			<div class="panel-body" style="background-color: #fff;">
+				<div class="text-center margin-bottom-40"><img src="assets/images/logo.png"></div>
+				<form ng-submit=login() name="loginForm" novalidate >
+				  <div class="input-group push-down-20">
+				  	<span class="input-group-addon fixAddon"><i class="glyphicon glyphicon-user"></i></span>
+				    <input name=userName type="text" minlength=7 maxlength=9 class="form-control newInput" placeholder="{{'Username' | translate}}" ng-model="userInfo.auuId" required >
+				  </div>
+				   <p class="marginLeft40  push-down-20" ng-show="(loginForm.$submitted || loginForm.userName.$touched)">
+						<span class="mandatory" data-ng-show="loginForm.userName.$error.required">{{'Username is required.' | translate}}</span>
+						<span class="mandatory" data-ng-show="loginForm.userName.$error.minlength || loginForm.userName.$error.maxlength">{{'Min length is 7 and Max length is 9 required' | translate}}</span>
+					</p>
+				  <div class="input-group push-down-20">
+				  	<span class="input-group-addon fixAddon"><i class="glyphicon glyphicon-lock"></i></span>
+				    <input type=password class="form-control newInput" name=password placeholder="{{'Password' | translate}}" ng-model="userInfo.password" required>
+				  </div>
+				  <p class="marginLeft40 push-down-20" ng-show="(loginForm.$submitted || loginForm.password.$touched)">
+						<span class="mandatory" data-ng-show="loginForm.password.$error.required">{{'Password is required.' | translate}}</span>
+						</p>
+				  <div class="margin-top-40">
+				  	<button class="btn btn-default borderNone" type="button" ng-click="forgotPassword()">{{'Forgot Password' | translate}} ?</button>
+				  </div>
+				  <div class="alert alert-{{color}}"
+						style="text-align: center; display: {{display}}" id=message_block>
+						<strong>{{loginForm.$error.serverMessage | translate}}</strong>
+				  </div>
+				  <div class="text-center">
+					  <input type="submit" class="btn btn-danger" value="{{'Login' | translate}}" />
+					  <input type="reset" class="btn btn-danger" value="{{'Reset' | translate}}" ng-click=reset(loginForm)>
+				  </div>
+				</form>
+			</div>
+	</div>
+</div>
+<div id="resetPassword" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-md">
+		<div class=modal-content>
+			<form id="resetForm" name="resetForm" ng-submit="resetPassword()" novalidate>
+				<div class="modal-header">
+					<h4 class=modal-title>Reset Password
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+			        </h4>
+				</div>
+				<div class="modal-body">
+				  	<div class="form-group">
+						<label>{{"Old Password" | translate}} <span
+							class="mandatory">*</span></label> <input class="form-control"
+							ng-model="resetLogin.oldPassword" type="password"
+							placeholder="Enter Old Password" name="oldPass" id="oldPass"
+							max-length="12" min-length="3" required="required">
+						<p class="error-msg" ng-show="resetForm.$submitted || resetForm.oldPass.$touched">
+							<span ng-show="resetForm.oldPass.$error.required"
+								class="mandatory">{{ 'Enter password' | translate}}</span>
+							<span ng-show="resetForm.oldPass.$error.minlength"
+								class="mandatory">{{'Min 3 letters required' | translate}}</span>													
+						</p>
+					</div>
+					<div class="form-group">
+						<label>{{"New Password" | translate}} <span
+							class="mandatory">*</span></label> <input class="form-control"
+							ng-model="resetLogin.newPassword" type="password"
+							placeholder="Enter New Password" name="newPass" id="newPass"
+							ng-pattern = "/(?=^.{8,15}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/" maxlength="15" required="required" >
+						<p class="error-msg" ng-show="resetForm.$submitted || resetForm.newPass.$touched">
+							<span ng-show="resetForm.newPass.$error.required"
+								class="mandatory">{{ 'Enter password' | translate}}</span>
+							<span ng-show="resetForm.newPass.$error.pattern"
+								class="mandatory">{{'Password must be at least 8 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit and 1 special character.' | translate}}</span>													
+						</p>
+					</div>
+					<div class="form-group">
+						<label>{{"Confirm Password" | translate}} <span
+							class="mandatory">*</span></label> <input class="form-control"
+							ng-model="resetLogin.confirmPassword" type="password"
+							placeholder="Enter password again" name="confirmPass" id="confirmPass"
+							required="required">
+						<p class="error-msg" ng-show="resetForm.$submitted || resetForm.confirmPass.$touched">
+							<span ng-show="resetForm.confirmPass.$error.required"
+								class="mandatory">{{ 'Enter password' | translate}}</span>
+							<!-- <span ng-show="resetForm.confirmPass.$error.minlength"
+								class="mandatory">{{'Min 3 letters required' | translate}}</span>	 -->												
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+				  <button class="btn btn-danger pull-right-sm" type="submit">Change Password</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div id="forgotPassword" class="modal fade" role="dialog" data-ng-if="showForgotPasswordModal">
+	<div class="modal-dialog modal-md">
+		<div class=modal-content>
+			<form id="forgotForm" name="forgotLogin.forgotForm" ng-submit="forgotPass()" novalidate>
+				<div class="modal-header">
+			 		<button type=button class=close data-dismiss=modal>&times;</button>
+					<h4 class=modal-title>Forgot Password</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>{{"Username" | translate}} <span class="mandatory">*</span></label>
+						<input class="form-control"
+							ng-model="userInfo.username"
+							placeholder="Enter Username" name="username" id="username"
+							maxlength="9" minlength="7" required>
+						<p class="error-msg" ng-show="forgotLogin.forgotForm.$submitted || forgotLogin.forgotForm.newPass.$touched">
+							<span ng-show="forgotLogin.forgotForm.username.$error.required"
+								class="mandatory">{{ 'Enter User Name' | translate}}</span>
+							<span ng-show="forgotLogin.forgotForm.username.$error.minlength"
+								class="mandatory">{{'Min 7 letters required' | translate}}</span>													
+						</p>
+					</div>
+				  	<div class="form-group">
+						<label>{{"Date Of Birth" | translate}} <span class="mandatory">*</span></label>
+						<datepicker date-format="dd-MM-yyyy" date-set="{{maxDate| date}}" date-max-limit="{{maxDate| date}}">
+							<input class="form-control"	ng-model="forgotLogin.dob"
+								placeholder="Enter DOB" name="dob" id="dob" required readonly="true">
+							<p class="error-msg" ng-show="forgotLogin.forgotForm.$submitted || forgotLogin.forgotForm.dob.$touched">
+								<span ng-show="forgotLogin.forgotForm.dob.$error.required"
+									class="mandatory">{{ 'Enter DOB' | translate}}</span>												
+							</p>
+						</datepicker>
+					</div>
+					<div class="form-group">
+						<label>{{"ID number" | translate}} <span class="mandatory">*</span></label>
+						<input class="form-control"
+							ng-model="forgotLogin.idNo" minlength=3 maxlength=10 
+							placeholder="Enter ID number" name="idNo" id="idNo" required><!--ng-pattern="/^[a-zA-Z1-9][a-zA-Z0-9]{19}$/"-->
+						<p class="error-msg" ng-show="forgotLogin.forgotForm.$submitted || forgotLogin.forgotForm.idNo.$touched">
+							<span ng-show="forgotLogin.forgotForm.idNo.$error.required" class="mandatory">{{ 'Please enter identification number' | translate}}</span>
+							<span ng-show="forgotLogin.forgotForm.idNo.$error.minlength" class="mandatory">{{'Enter alphanumeric having minimum length 3 ' | translate}} </span>											
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+				  <button class="btn btn-danger pull-right-sm" type="submit">Reset Password</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

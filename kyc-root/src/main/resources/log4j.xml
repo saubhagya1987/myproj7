@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+        xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+        <appender name="CA" class="org.apache.log4j.ConsoleAppender">
+                <param name="Threshold" value="TRACE" />
+                <layout class="org.apache.log4j.PatternLayout">
+                        <param name="ConversionPattern" value="%C{1} %L [%t] %-5p %d{dd MMM yyyy HH:mm:ss,SSS} - %m%n" />
+                </layout>
+        </appender>
+
+	    <appender name="MGAPP_FILE" class="org.apache.log4j.RollingFileAppender">
+                <param name="File" value="/africa_agile/opt/wildfly-10.1.0.Final/standalone/log/root_zm_new.log" />
+                <param name="Threshold" value="TRACE" />
+                <param name="Append" value="true" />
+                <param name="MaxFileSize" value="1024MB" />
+                <param name="MaxBackupIndex" value="10" />
+                <layout class="org.apache.log4j.PatternLayout">
+                        <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+                </layout>
+        </appender>
+
+        <root>
+                <level value="TRACE" />
+                <appender-ref ref="CA" />
+                <appender-ref ref="MGAPP_FILE" />
+        </root>
+        <logger name="org.springframework">
+                <level value="info" />
+        </logger>
+        <logger name="org.hibernate">
+                <level value="info" />
+        </logger>
+        <logger name="org.hibernate.SQL">
+                <level value="info" />
+        </logger>
+        <logger name="org.hibernate.type">
+                <level value="info" />
+        </logger>
+        <logger name="org.apache">
+                <level value="info" />
+        </logger>
+
+        <logger name="com.mchange">
+                <level value="info" />
+        </logger>
+        <logger name="org.jivesoftware">
+                <level value="TRACE" />
+        </logger>
+
+         <logger name="com.airtel">
+                <level value="info" />
+        </logger> 
+        
+        <!-- Command Logging Configuration -->
+		<appender name="REQUEST_RESPONSE_FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+			<param name="Append" value="false" />
+			<param name="MaxFileSize" value="1024MB" />
+			<param name="MaxBackupIndex" value="200" />
+			<param name="File" value="/africa_agile/opt/wildfly-10.1.0.Final/standalone/log/request_response.log" />
+			<param name="DatePattern" value="'.'yyyy-MM-dd" />
+			<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n" />
+			</layout>
+		</appender>
+		
+		<logger name="message.logger">
+			<level value="trace" />
+			<appender-ref ref="MGAPP_FILE" />			
+			<appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+		</logger>
+
+
+</log4j:configuration>

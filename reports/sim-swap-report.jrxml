@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="user-reports" pageWidth="646" pageHeight="842" columnWidth="606" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1415fb9-88ea-444e-a2ed-c985d3604012">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="alternating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2!=0]]></conditionExpression>
+			<style backcolor="#AAD7F8"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#C5E2F7"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="status_flag" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString language="plsql">
+		<![CDATA[{call USER_REPORTS($P{status_flag},$P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="LAST_NAME" class="java.lang.String"/>
+	<field name="USER_TYPE" class="java.lang.String"/>
+	<field name="ROLE_NAME" class="java.lang.String"/>
+	<field name="SIM_SWAP_ACCESS" class="java.lang.String"/>
+	<field name="EDIT_INFO_ACCESS" class="java.lang.String"/>
+	<field name="DEVICE_ID" class="java.lang.String"/>
+	<field name="APP_VERSION" class="java.lang.String"/>
+	<field name="STATUS_FLAG" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4bf205c4-fb8d-4299-ba32-d7165a5c2f14" x="164" y="0" width="278" height="42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIM SWAP Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bf36a119-ce1c-460b-a718-46ce2db90beb" mode="Opaque" x="1" y="1" width="120" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MSISDN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="41ff24ea-f312-4b00-ac40-4f876daca629" mode="Opaque" x="122" y="1" width="120" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date Of Request]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d97153f-f464-4015-ad3e-8f11ff94483b" mode="Opaque" x="243" y="1" width="120" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="752e1a7c-c132-416d-8d29-eab32e7790e5" mode="Opaque" x="364" y="1" width="120" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reason for Rejection]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b08aab21-ebc4-4530-8ac5-cf0c2f6825a2" mode="Opaque" x="485" y="1" width="120" height="38" forecolor="#FFFFFF" backcolor="#637EB5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CP MSISDN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3bf0a044-0810-44a4-9877-e213fd899260" style="alternating" mode="Opaque" x="1" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d699f5f9-12fc-481e-bdf6-dcbc9f1b6800" style="alternating" mode="Opaque" x="122" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75329aa5-727c-43e8-9cc9-da8906ed6a97" style="alternating" mode="Opaque" x="243" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{USER_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="83e6de59-e2f3-428c-a519-64137d49b84f" style="alternating" mode="Opaque" x="364" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ROLE_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8b43e8b1-ab70-4c26-9bc5-3054f4637f0d" style="alternating" mode="Opaque" x="485" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIM_SWAP_ACCESS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

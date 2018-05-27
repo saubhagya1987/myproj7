@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="user-reports" pageWidth="380" pageHeight="842" columnWidth="340" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1415fb9-88ea-444e-a2ed-c985d3604012">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="org.apache.commons.lang.time.*"/>
+	<style name="alternating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2!=0]]></conditionExpression>
+			<style backcolor="#AAD7F8"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#C5E2F7"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="created_on" class="java.util.Date"/>
+	<parameter name="user_name" class="java.lang.String"/>
+	<parameter name="report_view" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[{call CP_REPORT($P{created_on},$P{user_name},$P{report_view},$P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="TOTAL_COUNT" class="java.math.BigDecimal"/>
+	<field name="APPROVED_COUNT" class="java.math.BigDecimal"/>
+	<field name="BARRED_COUNT" class="java.math.BigDecimal"/>
+	<field name="REJECTED_COUNT" class="java.math.BigDecimal"/>
+	<field name="HOTLINE_COUNT" class="java.math.BigDecimal"/>
+	<field name="EDIT_COUNT" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4bf205c4-fb8d-4299-ba32-d7165a5c2f14" x="30" y="5" width="280" height="42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Channel Partner Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f558fc89-d2a6-461e-93f2-24748a2d2e5f" x="170" y="0" width="100" height="25"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MMM-yyyy").format(DateUtils.addDays($P{created_on}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9b6e5178-7ed0-4972-b2a3-dccaf7ced9c2" x="70" y="0" width="100" height="25"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Period : ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="280" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="00d8222c-df8e-4765-8fad-887c25175212" mode="Opaque" x="1" y="10" width="160" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Registration:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbe267c5-5c86-4ac6-ba41-9616aac5a1e5" mode="Opaque" x="90" y="35" width="92" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Approved:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df42a897-ff98-4d25-bb61-bb5182949d1a" mode="Opaque" x="90" y="60" width="92" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Barred:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9718fbf8-5442-4f78-9c5e-adbca58d6902" mode="Opaque" x="90" y="85" width="92" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Rejected:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0728cd9-b0eb-45cc-b295-a0c31f162ee3" mode="Opaque" x="90" y="110" width="92" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Hotlined:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37efbbed-5553-4250-aba1-3d759277178f" mode="Opaque" x="1" y="145" width="160" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total SIM Swap:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d5bdeafd-bbd5-4f5c-99a5-4eb5ed036a12" mode="Opaque" x="90" y="170" width="92" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Approved:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="16ee293b-f1f2-4b09-9b4c-31e9b2131508" mode="Opaque" x="90" y="195" width="92" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Rejected:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d0145fb-2f15-4b3e-80a6-2c7298e48139" mode="Opaque" x="1" y="230" width="160" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Edits:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="32a1fc4a-783e-4489-80c5-469167386a28" x="170" y="10" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="Reference">
+				<reportElement uuid="fa0b83c8-acfb-49f4-bbc2-70f9b9983001" x="191" y="35" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{APPROVED_COUNT}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://10.56.188.37:7002/jasperserver/flow.html?_flowId=viewReportFlow&reportUnit=%2FAIRTEL_KYC_UG%2Freports%2FCP_Report_Log&standAlone=true&ParentFolderUri=/AIRTEL_KYC_UG/reports&j_username=jasperadmin&j_password=jasperadmin&theme=easy_access&created_on="+new SimpleDateFormat("yyyy-MM-dd").format($P{created_on})+"&user_name="+$P{user_name}+"&final_status=APPROVED"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField hyperlinkType="Reference">
+				<reportElement uuid="ff040d32-78c1-43ea-9c4f-274c7c343355" x="191" y="60" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BARRED_COUNT}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://10.56.188.37:7002/jasperserver/flow.html?_flowId=viewReportFlow&reportUnit=%2FAIRTEL_KYC_UG%2Freports%2FCP_Report_Log&standAlone=true&ParentFolderUri=/AIRTEL_KYC_UG/reports&j_username=jasperadmin&j_password=jasperadmin&theme=easy_access&created_on="+new SimpleDateFormat("yyyy-MM-dd").format($P{created_on})+"&user_name="+$P{user_name}+"&final_status=BARRED"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField hyperlinkType="Reference">
+				<reportElement uuid="9f4de3d8-329b-4f99-96a6-7bf599c2fce5" x="191" y="85" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REJECTED_COUNT}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://10.56.188.37:7002/jasperserver/flow.html?_flowId=viewReportFlow&reportUnit=%2FAIRTEL_KYC_UG%2Freports%2FCP_Report_Log&standAlone=true&ParentFolderUri=/AIRTEL_KYC_UG/reports&j_username=jasperadmin&j_password=jasperadmin&theme=easy_access&created_on="+new SimpleDateFormat("yyyy-MM-dd").format($P{created_on})+"&user_name="+$P{user_name}+"&final_status=REJECTED"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField hyperlinkType="Reference">
+				<reportElement uuid="585fe5e6-58ef-46d2-b5f2-ee7f2260579b" x="191" y="110" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HOTLINE_COUNT}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://10.56.188.37:7002/jasperserver/flow.html?_flowId=viewReportFlow&reportUnit=%2FAIRTEL_KYC_UG%2Freports%2FCP_Report_Log&standAlone=true&ParentFolderUri=/AIRTEL_KYC_UG/reports&j_username=jasperadmin&j_password=jasperadmin&theme=easy_access&created_on="+new SimpleDateFormat("yyyy-MM-dd").format($P{created_on})+"&user_name="+$P{user_name}+"&final_status=HOTLINED"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField hyperlinkType="Reference">
+				<reportElement uuid="d9ead05a-ebcb-45e7-83ce-09a0d10c68fa" x="170" y="230" width="100" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EDIT_COUNT}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://10.56.188.37:7002/jasperserver/flow.html?_flowId=viewReportFlow&reportUnit=%2FAIRTEL_KYC_UG%2Freports%2FCP_Report_Log&standAlone=true&ParentFolderUri=/AIRTEL_KYC_UG/reports&j_username=jasperadmin&j_password=jasperadmin&theme=easy_access&created_on="+new SimpleDateFormat("yyyy-MM-dd").format($P{created_on})+"&user_name="+$P{user_name}+"&final_status=EDIT"]]></hyperlinkReferenceExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

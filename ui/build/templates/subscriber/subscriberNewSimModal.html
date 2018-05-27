@@ -1,0 +1,110 @@
+<fieldset>
+	<legend>{{"Personal details" | translate}}</legend>
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"MSISDN" | translate}} <span class="mandatory">*</span></label>
+				<div class="form-group">
+					<input class="form-control"
+						ng-model="addSubscriberObj.subscriberData.newMsisdn" name="msisdn" id="msisdn"
+						placeholder="{{'Enter' | translate}} {{'MSISDN' | translate}}"  ng-readonly="selectedDesabled"  
+						ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" maxlength="9"	minlength="9" required>
+					<p class="error-msg" ng-show="subscriberForm.$submitted || subscriberForm.msisdn.$touched">
+						<span ng-show="subscriberForm.msisdn.$error.required"
+						class="mandatory">{{ 'msisdn is required' | translate}}</span>
+						<span ng-show="subscriberForm.msisdn.$error.pattern"
+						class="mandatory">{{'Only Numbers allowed.' | translate}}</span>
+						<span ng-show="subscriberForm.msisdn.$error.minlength"
+						class="mandatory">{{'min 9 digit number required' | translate}}</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Sim Serial Number" | translate}} <span class="mandatory">*</span></label>
+				<div class="form-group">
+					<input class="form-control"
+						ng-model="addSubscriberObj.subscriberData.simSerialNumber" name="simSerial" id="simSerial"
+						placeholder="{{'Enter' | translate}} {{'Sim Serial No' | translate}}"  ng-readonly="selectedDesabled"  
+						ng-pattern="/(^[0-9]\d{0,5}$)/" maxlength="5" minlength="5" required>
+					<p class="error-msg" ng-show="subscriberForm.$submitted || subscriberForm.simSerial.$touched">
+						<span ng-show="subscriberForm.simSerial.$error.required"
+						class="mandatory">{{ 'Sim Serial No is required' | translate}}</span>
+						<span ng-show="subscriberForm.simSerial.$error.pattern"
+						class="mandatory">{{'Only Numbers allowed.' | translate}}</span>
+						<span ng-show="subscriberForm.simSerial.$error.minlength"
+						class="mandatory">{{'min 5 digit number required' | translate}}</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Upload Physical Form" | translate}}  <span class="mandatory">*</span></label>
+				<input id="physicalFormId"
+					class="form-control" type="file" name="physicalForm" required filevalid accept="image/png,image/jpeg,image/jpg" 
+					base-sixty-four-input ng-model="imagesObject.physicalFormId">
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.physicalForm.$touched">
+					<span ng-show="subscriberForm.physicalForm.$error.required"
+						class="mandatory">{{'Please Upload Physical Form' | translate }}</span>
+					<span ng-show="subscriberForm.physicalForm.$error.accept"
+						class="mandatory">{{'Only jpeg/png files are supported' | translate }}</span>
+					<span ng-show="subscriberForm.physicalForm.$error.filevalid"
+						class="mandatory">{{'File name is not valid' | translate }}</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Create Airtel Money A/c?" | translate}} <span class="mandatory">*</span></label> 
+				 <select class="form-control" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].amAccount" name="amAccount">
+				 	<option value="Yes">Yes</option>
+				 	<!-- <option value="No">No</option> -->
+				 </select>													
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.amAccount.$touched">
+					<span ng-show="subscriberForm.amAccount.$error.required"
+						class="mandatory">{{"Do You Want To Create Airtel Money A/c" | translate}}.</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Use of proxy for registration" | translate }}</label>		
+				<div> 
+					<label class="radio-inline">
+						<input type="radio" value="Yes" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].proxyForRegistration"
+						name="proxy" required>YES
+					</label>								
+				    <label class="radio-inline"> 
+				      	<input type="radio" value="No" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].proxyForRegistration"
+							name="proxy" required>NO
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="form-group">
+				<label>{{"Is end user a minor?" | translate}} </label><span class="mandatory">*</span></label> 
+				<select class="form-control" ng-model="addSubscriberObj.subscriberData.subscriberDetails[0].isMinor" name="isMinor">
+				 	<option value="Yes">Yes</option>
+				 	<option value="No">No</option>
+				</select>
+				<p class="error-msg"
+					ng-show="subscriberForm.$submitted || subscriberForm.isMinor.$touched">
+					<span ng-show="subscriberForm.isMinor.$error.required"
+						class="mandatory">{{"Is end user a minor" | translate}}.</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</fieldset>
+<div class="row">
+	<div class="form-group text-right col-md-12">
+		<input type="submit" class="btn btn-danger" value="{{'Submit' | translate}}"/>
+	</div>
+</div>

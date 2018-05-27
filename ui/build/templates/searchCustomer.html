@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{'Search Customers' | translate }}</div>
+            	<div class="panel-body">                                  
+                 	<form role="form" ng-submit="searchCustomer()" name="searchForm" novalidate>
+                        <div class="row">  
+                            <div class="col-lg-3">
+	                            <div class="form-group">
+	                                <input type="text" class="form-control" name="msisdn" placeholder="{{'MSISDN' | translate }}" autofocus ng-model="search.msisdn" ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" minlength="9" maxlength="9" required>
+	                                <p class="error-msg" ng-show="searchForm.msisdn.$touched || searchForm.$submitted">
+										<span ng-show="searchForm.msisdn.$error.required" class="mandatory">{{'MSISDN is required.' | translate}}</span>
+										<span ng-show="searchForm.msisdn.$error.pattern" class="mandatory">{{'Only numbers are allowed.' | translate}}</span>
+									</p>
+	                            </div>
+                            </div>
+                            <div class="col-lg-7">
+								<button type="submit" class="btn btn-danger col-md-3" ng-disabled="searchForm.$invalid">{{'Submit' | translate}}</button>
+							</div>                                 
+                        </div> 
+                    </form>
+				</div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="modal fade edit-modal" id="editSubscriberModal" role="dialog" aria-labelledby="editSubscriberModal">  <!-- data-ng-if="showAddSubscriberModal" -->
+	<div class="modal-dialog modal-lg modal-xs modal-sm" role="document">
+	   <div class="modal-content">
+	   		<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">{{heading | translate}}
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+						</div>
+						<div class="panel-body">
+							<form role="form" class="myForm" name="subscriberForm" id="subscriberForm" ng-submit="editSubscriber()" novalidate>
+								<div class="col-md-12" ng-include="templates.editSubscriberModal"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+	   </div>
+	</div>
+</div>

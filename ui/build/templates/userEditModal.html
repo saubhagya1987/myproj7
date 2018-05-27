@@ -1,0 +1,323 @@
+<div class="col-lg-12">
+	<div class="row">
+		<div class="col-lg-12 ">
+	          <div class="form-group">
+	           <label for="registrationProcess{{$index}}" ng-repeat="role in roles"
+	            class="header-label-active padding-10">
+	            <input required
+	            class="radio-in" type="radio" size="4" ng-change="getSubRoles(role.roleId)"
+	            ng-model="userForm.topRole" ng-value="{{role}}" ng-checked="userForm.topRole==role"
+	            name="registrationProcess" id="registrationProcess{{$index}}" /> {{role.description | translate}} </label> <!-- ng-disabled="data.selectedPartner==role.roleName?!disabled:disabled" -->
+	          </div>
+	          <p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.registrationProcess.$touched">
+					<span ng-show="addUserForm.registrationProcess.$error.required" class="mandatory">{{ "validation_user_role_required" | translate}}</span>	
+		      </p>
+	    </div>									
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>MSISDN <span class="mandatory">*</span></label>
+					<input required="required"
+							class="form-control" ng-model="userForm.userDetail.msisdn" name="mobileNo" id="mobileNo"
+							placeholder="Enter MSISDN" ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/"  maxlength="9" minlength="9" ng-blur="isAirtel() && is_MSISDNAVAILABE1(userForm.userDetail.msisdn)"
+							>   <!-- ng-blur="is_MSISDNAVAILABE(userForm.userDetail.msisdn)"  -->
+					<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.mobileNo.$touched">
+							<span ng-show="addUserForm.mobileNo.$error.required" class="mandatory">Please Enter mobile number.</span>
+							<span ng-show="isMSISDNAVAILABE" class="mandatory">{{'user already registered with msisdn.' | translate}}.</span> 
+							<span ng-show="addUserForm.mobileNo.$error.pattern ||  addUserForm.mobileNo.$error.minlength" class="mandatory">{{'Please enter valid 9 digit mobile number.' | translate}}</span>
+					</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>First Name <span class="mandatory">*</span></label> <input class="form-control"
+					ng-model="userForm.userDetail.firstName" maxlength="70" minlength="3"
+					placeholder="Enter First Name" name="firstName" ng-pattern="/^((?!.*abcde|bcdef|cdefg|defgh|efghi|fghij|ghijl|hijkl|ijklm|jklmn|klmno|lmnop|mnopq|nopqr|opqrs|pqrst|qrstu|rstuv|stuvw|tuvwx|uvwxy|vwxyz|qwer|wert|erty|rtyu|tyui|yuio|uiop|asdf|sdfg|dfgh|fghj|ghjk|hjkl|zxcv|xcvb|cvbn|vbnm)([a-zA-Z])\2?(?!\2{2}))+$/" required="required">
+				<p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.firstName.$touched">
+					<span ng-show="addUserForm.firstName.$error.pattern" class="mandatory">{{'validation_name_pattern' | translate}}</span>
+					<span ng-show="addUserForm.firstName.$error.required" class="mandatory">{{ "validation_fname_required" | translate}}</span>	
+		            <span ng-show="addUserForm.firstName.$error.maxlength ||  addUserForm.firstName.$error.minlength" class="mandatory">{{'validation_fname_length' | translate}}</span> 
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Last Name <span class="mandatory">*</span></label>
+				<input class="form-control" name="lastName"
+					ng-model="userForm.userDetail.lastName" placeholder="Enter Last Name" required="required"  maxlength="70" minlength="3"
+					ng-pattern="/^((?!.*abcde|bcdef|cdefg|defgh|efghi|fghij|ghijl|hijkl|ijklm|jklmn|klmno|lmnop|mnopq|nopqr|opqrs|pqrst|qrstu|rstuv|stuvw|tuvwx|uvwxy|vwxyz|qwer|wert|erty|rtyu|tyui|yuio|uiop|asdf|sdfg|dfgh|fghj|ghjk|hjkl|zxcv|xcvb|cvbn|vbnm)([a-zA-Z])\2?(?!\2{2}))+$/" value="{{userForm.userDetail.lastName}}">
+				<p class="error-msg" 
+					ng-show="addUserForm.$submitted || addUserForm.lastName.$touched">
+					<span ng-show="addUserForm.lastName.$error.pattern" class="mandatory">{{'validation_name_pattern' | translate}}</span>
+					<span ng-show="addUserForm.lastName.$error.required" class="mandatory">{{ "validation_lname_required" | translate}}</span>	
+				 <span ng-show="addUserForm.lastName.$error.maxlength ||  addUserForm.lastName.$error.minlength" class="mandatory">{{'validation_lname_length' | translate}}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4" ng-if="!mandatory || isAirtel()">
+			<div class="form-group">
+				<label>{{"AUUID" | translate}}<span class="mandatory" ng-hide="mandatory && !isAirtel()">*</span></label>	
+					<input ng-required="!mandatory || isAirtel()" type="text"
+							class="form-control" ng-model="userForm.userDetail.auuid" name="auuid" id="auuid" 
+							placeholder="Enter AUUID" minlength=7 maxlength=8 ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/"> <!-- ng-blur="is_AUUIDAVAILABLE1(userForm.userDetail.auuid)" -->
+					<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.auuid.$touched">
+						<span ng-show="addUserForm.auuid.$error.required" class="mandatory">{{"Please Enter AuuId." | translate}}</span>
+						<span ng-show="isAUUIDAVAILABE == false" class="mandatory">{{'Invalid AuuId, please retry' | translate}}.</span> 
+						<span ng-show="addUserForm.auuid.$error.pattern ||  addUserForm.auuid.$error.minlength" class="mandatory">{{'Please enter min 7 digit number.' | translate}}</span>
+					</p>
+			</div>
+		</div>
+		<div class="col-lg-4"  ng-if="mandatory && !isAirtel()">
+			<div class="form-group">
+				<label>{{"Dealer Code" | translate}} <span class="mandatory">*</span></label>	
+					<input required type="text"
+							class="form-control" ng-model="userForm.userDetail.dealerCode" name="dealerCode" id="dealerCode" 
+							placeholder="Enter Dealer Code" minlength=3 maxlength=10>
+					<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.dealerCode.$touched">
+						<span ng-show="addUserForm.dealerCode.$error.required" class="mandatory">{{"Please Enter Dealer Code." | translate}}</span>
+						<span ng-show="addUserForm.dealerCode.$error.pattern ||  addUserForm.dealerCode.$error.minlength" class="mandatory">{{'Please enter min 3 digit number' | translate}}</span>
+					</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Sub Role <span class="mandatory">*</span> </label> <select class="form-control" required="required"
+					name="subRole" id="subRole" ng-model="userForm.subRole[0]" 
+					ng-options="subRole as (subRole.roleName) for subRole in subRoles" ng-change=" isAirtel() && is_MSISDNAVAILABE1(userForm.userDetail.msisdn)">
+					<option value=" ">--: Select:--</option>
+				</select>
+				<p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.subRole.$touched">
+					<span ng-show="addUserForm.subRole.$error.required" class="mandatory">Please select sub-role.</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Email Id <span class="mandatory" ng-hide="userForm.topRole.roleId=='22'">*</span></label>
+				<input class="form-control"
+					ng-model="userForm.userDetail.email" placeholder="Enter Email" type="email" ng-required="(userForm.topRole.roleId=='22')?false:true" name="email" id="email" >
+				<p class="error-msg"
+				ng-show="addUserForm.$submitted || addUserForm.email.$touched">
+					<span ng-show="addUserForm.email.$error.required" class="mandatory">{{ "Please enter email id." | translate}}</span>
+					<span ng-show="addUserForm.email.$error.email" class="mandatory">{{'Please enter valid email-id' | translate}}.</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Department<span class="mandatory" ng-hide="userForm.topRole.roleId=='22'">*</span></label>
+				<select
+					class="form-control" ng-model="userForm.userDetail.userDepartment[0]" 
+					name="departments" ng-required="!(userForm.topRole.roleId=='22')"
+					ng-options="department.departmentName for department in departments">
+					<option value=" ">--: Select:--</option>
+				</select>
+				<p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.departments.$touched">
+					<span ng-show="addUserForm.departments.$error.required"
+						class="mandatory">Please select departmemts.</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4" data-ng-if="mandatory">
+		    <label class="control-label">Allow Sim Swap Access:</label>
+		    <div>
+		      	<label class="radio-inline"> 
+		      		<input type="radio" value="active" ng-model="userForm.userDetail.simSwapAccess"
+					name="simSwapAccess" required>Yes
+				</label> 
+				<label class="radio-inline"> 
+					<input type="radio" value="inactive" ng-model="userForm.userDetail.simSwapAccess"
+					name="simSwapAccess" required>No
+				</label>
+		  	</div>
+		</div>
+		<div class="col-lg-4" data-ng-if="mandatory">
+		    <label class="control-label">Airtel Handset Provided:</label>
+		    <div>
+		      	<label class="radio-inline"> 
+		      		<input type="radio" value="Yes" ng-model="userForm.userDetail.airtelHandsetName"
+					name="airtelHandsetName" required>Yes
+				</label> 
+				<label class="radio-inline"> 
+					<input type="radio" value="No" ng-model="userForm.userDetail.airtelHandsetName"
+					name="airtelHandsetName" required>No
+				</label>
+		  	</div>
+		</div>
+	</div>
+	<div class="row" data-ng-if="mandatory || showSND">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Province<span class="mandatory">*</span></label> 
+				<select	class="form-control" ng-model="userForm.location.provinceIds[0]" name="region" required
+					ng-options="zone as zone.provinceName for zone in province | unique: 'provinceName'">
+					<option value=" ">--: Select:--</option>
+					<option value="all">All</option>
+				</select>
+				<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.region.$touched">
+					<span ng-show="addUserForm.region.$error.required"
+						class="mandatory">Please select regions.</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>District<span class="mandatory">*</span></label> 
+				<select	class="form-control" ng-model="userForm.location.districtIds[0]" name="territory" required="required"
+					ng-options="district as district.districtName for district in userForm.location.provinceIds[0].districts"  as (territory.territory) for district in districts">
+					<option value=" ">--: Select:--</option>
+					<option value="all">All</option>
+				</select>
+				<p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.territory.$touched">
+					<span ng-show="addUserForm.territory.$error.required"
+						class="mandatory">Please select district.</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Village<span class="mandatory">*</span></label> 
+				<select	class="form-control" ng-model="userForm.location.villageIds[0]" name="village" required="required"
+					ng-options="village  as village.villageName for village in userForm.location.districtIds[0].villages">
+					<option value=" ">--: Select:--</option>
+					<option value="all">All</option>
+				</select>
+				<p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.village.$touched">
+					<span ng-show="addUserForm.village.$error.required"
+						class="mandatory">Please select village.</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row" data-ng-if="mandatory">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Handset IMEI" | translate }}<span ng-show="mandatory" class="mandatory">*</span></label>
+				<input class="form-control" minlength=15 maxlength=15  ng-pattern="/(^0$)|(^[1-9]\d{0,15}$)/"
+					ng-model="userForm.userDetail.airtelHandsetImei"
+					type="text" placeholder="Enter Handset IMEI"
+					name="imei" id="imei" required>
+				<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.imei.$touched">
+					<span ng-show="addUserForm.imei.$error.required"
+						class="mandatory">{{ "Please enter Handset IMEI" | translate}}</span>
+					<span ng-show="addUserForm.imei.$error.pattern ||  addUserForm.imei.$error.minlength" class="mandatory">{{'Please enter valid 15 digit number.' | translate}}</span>
+				</p>												
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"CP contract" | translate}}</label>
+				<input class="form-control" minlength=3 maxlength=64
+					ng-model="userForm.userDetail.cpContract"
+					type="text" placeholder="Enter CP contract"
+					name="cpContract" id="cpContract">
+				<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.cpContract.$touched">
+					<span ng-show="addUserForm.cpContract.$error.minlength"
+						class="mandatory">{{ "Please enter min 3 characters" | translate}}</span>
+				</p>												
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label>{{"CP Image" | translate}}</label>
+				<input id="cpImage"
+					class="form-control" type="file" filevalid base-sixty-four-input name="cpImage" accept="image/png,image/jpeg,image/jpg"
+					 ng-model="templates.cpImagePath">
+				<p class="error-msg"
+					ng-show="addUserForm.$submitted || addUserForm.cpImage.$touched">
+					<span ng-show="addUserForm.cpImage.$error.required"
+						class="mandatory">{{'Please choose ID front image.' | translate }}</span>
+					<span ng-show="addUserForm.cpImage.$error.accept"
+						class="mandatory">{{'Only jpeg/png files are supported' | translate }}</span>
+						<span ng-show="addUserForm.cpImage.$error.filevalid"
+						class="mandatory">{{'Enter valid file name' | translate }}</span>
+				</p>
+				<img id="cpImagePath" crossorigin="anonymous" class="block imgSmall" ng-src="{{templates.cpImagePath}}"/>
+			</div>
+		</div>
+	</div>
+	<div class="row" data-ng-if="mandatory">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Date of birth" | translate }}<span ng-show="mandatory" class="mandatory">*</span> </label> 
+				<datepicker date-format="dd-MM-yyyy"  date-set="{{templates.maxDate| date}}" date-max-limit="{{templates.maxDate| date}}" date-min-limit="{{templates.minDate| date}}">
+					<input class="form-control"
+					ng-model="userForm.userDetail.dob"
+					type="text" placeholder="Enter DOB" readonly
+					name="dateOfBirth" id="dateOfBirth" required>
+				</datepicker>													
+			</div>
+			<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.dateOfBirth.$touched">
+				<span ng-show="addUserForm.dateOfBirth.$error.required"
+					class="mandatory">{{ "Please select DOB." | translate}}</span> 
+			</p>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"ID Card No." | translate }}<span ng-show="mandatory" class="mandatory">*</span></label>
+				<input class="form-control" minlength=3 maxlength=10
+					ng-model="userForm.userDetail.idCardNo"
+					type="text" placeholder="Enter ID card number"
+					name="idCardNo" id="idCardNo" required>
+				<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.idCardNo.$touched">
+					<span ng-show="addUserForm.idCardNo.$error.required"
+						class="mandatory">{{ "Please enter ID card Number" | translate}}</span>
+						<span ng-show="addUserForm.idCardNo.$error.minlength" class="mandatory">{{'Please enter minimum 3 digit alphanumeric.' | translate}}</span>
+				</p>												
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Payment Mobile No." | translate }}<span class="mandatory">*</span> </label>
+				<input class="form-control" minlength=9 maxlength=9 ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/"
+					ng-model="userForm.userDetail.commissionMobileNo"
+					type="text" placeholder="Enter Distributor MSISDN number"
+					name="distr_msisdn" id="distr_msisdn" required>
+				<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.distr_msisdn.$touched">
+					<span ng-show="addUserForm.distr_msisdn.$error.required"
+						class="mandatory">{{ "Please enter Payment Mobile Number" | translate}}</span> 
+					<span ng-show="addUserForm.distr_msisdn.$error.pattern ||  addUserForm.distr_msisdn.$error.minlength" class="mandatory">{{'Please enter valid 9 digit number.' | translate}}</span>
+				</p>											
+			</div>
+		</div>
+	</div>
+	<div class="row" data-ng-if="mandatory">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"Distributor name/ID" | translate }}<span class="mandatory">*</span></label>
+				<input class="form-control" 
+					ng-model="userForm.userDetail.distributorName" minlength="3" maxlength="30" 
+					type="text" placeholder="Enter Distributor name/ID"
+					name="distr_name" id="distr_name" required>
+				<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.distr_name.$touched">
+					<span ng-show="addUserForm.distr_name.$error.required"
+						class="mandatory">{{ "Please enter Distributor name/ID" | translate}}</span>
+					<span ng-show="addUserForm.distr_name.$error.minlength" class="mandatory">{{'Please enter min 3 digit.' | translate}}</span>
+				</p>										
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>{{"TSM AUUID No." | translate}} <span class="mandatory">*</span></label>
+					<input required minlength=7 maxlength=8
+							class="form-control" ng-model="userForm.userDetail.tsmAuuid" name="tsmAuuid" id="tsmAuuid"
+							placeholder="Enter TSM AUUID No" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/">
+					<p class="error-msg" ng-show="addUserForm.$submitted || addUserForm.tsmAuuid.$touched">
+						<span ng-show="addUserForm.tsmAuuid.$error.required" class="mandatory">{{"Please enter TSM AUUID Number" | translate}}</span>
+						<span ng-show="addUserForm.tsmAuuid.$error.pattern ||  addUserForm.tsmAuuid.$error.minlength" class="mandatory">{{'Please enter min 7 digit number.' | translate}}</span>
+					</p>
+			</div>
+		</div>
+	</div>
+</div>

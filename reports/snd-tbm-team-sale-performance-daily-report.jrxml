@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="user-reports" pageWidth="876" pageHeight="842" columnWidth="836" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1415fb9-88ea-444e-a2ed-c985d3604012">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="53"/>
+	<property name="ireport.y" value="0"/>
+	<style name="alternating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2!=0]]></conditionExpression>
+			<style backcolor="#AAD7F8"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#C5E2F7"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="start_date" class="java.util.Date"/>
+	<parameter name="end_date" class="java.util.Date"/>
+	<parameter name="user_name" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[{call SND_TBM_SP_REPORT($P{start_date},$P{end_date},$P{user_name},$P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="USER_NAME" class="java.lang.String"/>
+	<field name="TOTAL_REGISTRATIONS" class="java.math.BigDecimal"/>
+	<field name="TOTAL_PROCESSED" class="java.math.BigDecimal"/>
+	<field name="APPROVED_COUNT" class="java.math.BigDecimal"/>
+	<field name="PENDING_COUNT" class="java.math.BigDecimal"/>
+	<field name="REJECTED_COUNT" class="java.math.BigDecimal"/>
+	<field name="BARRED_COUNT" class="java.math.BigDecimal"/>
+	<field name="HOTLINE_COUNT" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="273" y="0" width="277" height="42" uuid="4bf205c4-fb8d-4299-ba32-d7165a5c2f14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sale Performance]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="74" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="bf36a119-ce1c-460b-a718-46ce2db90beb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[User Name]]></text>
+			</staticText>
+			<line>
+				<reportElement x="663" y="1" width="1" height="38" forecolor="#F0F0F0" uuid="cb8f539b-927d-4f33-ac2b-6df1c2aea6a6"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="168" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="c4b1752f-f79a-4245-b715-6802ca4e5826"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Registrations ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="723" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="49c5d05f-c783-4246-bf32-5ba8a79182a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Hotlined]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="630" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="fa57f693-39e0-466d-bf09-227c8d41e563"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Barred]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="f05b3c0c-5bf0-44b0-a87b-dd332a8729f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Pending]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="354" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="d54b4f01-48a3-4202-9c3f-990944757d05"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Approved]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="262" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="812f1d4f-e186-4443-9634-843b23512275"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Processed ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="537" y="1" width="92" height="38" forecolor="#FFFFFF" backcolor="#637EB5" uuid="e16a5e09-c9d3-4772-97f0-5c64f3bdc6d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Rejected]]></text>
+			</staticText>
+			<line>
+				<reportElement x="354" y="1" width="1" height="38" forecolor="#FFFFFF" uuid="73d0e210-aef8-493c-a96a-77db1f063027"/>
+			</line>
+			<line>
+				<reportElement x="446" y="1" width="1" height="38" forecolor="#FFFFFF" uuid="2d6c7d8d-2ccb-4d7b-bdb6-8b571c36417a"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="74" y="0" width="92" height="25" uuid="a5b76050-af6a-49c6-910c-0ef8f5af1b42"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{USER_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="0" width="92" height="25" uuid="9867c00d-22af-423b-86e5-6e58b99442a1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TOTAL_REGISTRATIONS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="0" width="92" height="25" uuid="2687b819-2f10-4b02-a977-2e9933430382"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TOTAL_PROCESSED}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="92" height="25" uuid="8bf4bc5f-fce5-4d9c-9871-33e380e9d6af"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{APPROVED_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="0" width="92" height="25" uuid="0edb8787-517c-4b93-bcb0-4253a2f113d9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PENDING_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="538" y="0" width="92" height="25" uuid="77fb4653-cac9-436c-9a70-622a74982ac5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REJECTED_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="631" y="0" width="92" height="25" uuid="60e7150b-9927-4a0c-9343-fb816cc6d841"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{BARRED_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="723" y="0" width="92" height="25" uuid="4cd90310-db20-45b3-8354-32e02f66b27e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{HOTLINE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

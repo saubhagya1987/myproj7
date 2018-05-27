@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{'Customer Airtel Money Registration' | translate }}</div>
+            	<div class="panel-body">                                  
+                 	<form role="form" ng-submit="generateOtp()" name="searchForm">
+                        <div class="row">  
+                            <div class="col-lg-3">
+	                            <div class="form-group">
+	                                <input type = "text" class="form-control" name="msisdn" placeholder="{{'MSISDN' | translate }}" autofocus ng-model="search.msisdn" ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" minlength="9" maxlength="9" required>
+	                                <p class="error-msg" ng-show="searchForm.msisdn.$touched || searchForm.$submitted">
+										<span ng-show="searchForm.msisdn.$error.required" class="mandatory">{{'MSISDN is required.' | translate}}</span>
+										<span ng-show="searchForm.msisdn.$error.pattern" class="mandatory">{{'Only numbers are allowed.' | translate}}</span>
+										<span ng-show="searchForm.msisdn.$error.minlength" class="mandatory">{{'Minimum length should be : ' | translate}}9</span>
+										<span ng-show="searchForm.msisdn.$error.maxlength" class="mandatory">{{'Maximum length can be :' | translate}}9</span>
+									</p>
+	                            </div>
+                            </div>
+                            <div class="col-lg-2">
+	                            <input type="submit" value="{{'Send OTP' | translate}}" class="btn btn-danger" ng-disabled="searchForm.$invalid">
+							</div>
+							<div class="col-lg-7" data-ng-if="showOtp">
+								<div class="form-group col-md-5">
+									<input type="text" class="form-control" name="otpvalue" placeholder="{{'OTP' | translate }}" autofocus
+										ng-model="msisdnOtp" ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" maxlength="6">
+								</div>
+								<button type="button" class="btn btn-danger col-md-3" ng-click="validateOtp(msisdnOtp)">{{'Submit OTP' | translate}}</button>
+							</div>                       
+                        </div> 
+                    </form>
+                    <!-- <form role="form" ng-submit="amRegistration()" name="searchForm" data-ng-if="showRegistrationBlock">
+                    	<div class="row">  
+                           	<div class="col-lg-4 col-md-offset-4 text-center myBlock">
+	                            <div class="form-group">
+	                                Are you Sure you want to register MSISDN no :- {{customerAmData.msisdn}}
+	                            </div>
+	                            <div class="col-lg-12 text-center">
+	                            	<input type="submit" value="{{'Register' | translate}}" class="btn btn-danger">
+	                        	</div>
+                           	</div>
+                    	</div>
+                	</form> -->
+				</div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="modal fade edit-modal" id="editSubscriberModal" role="dialog" aria-labelledby="editSubscriberModal">  <!-- data-ng-if="showAddSubscriberModal" -->
+	<div class="modal-dialog modal-lg modal-xs modal-sm" role="document">
+	   <div class="modal-content">
+	   		<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">{{heading | translate}}
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+						</div>
+						<div class="panel-body">
+							<form role="form" class="myForm" name="subscriberForm" id="subscriberForm" ng-submit="editSubscriber()" novalidate>
+								<div class="col-md-12" ng-include="editSubscriberModal"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+	   </div>
+	</div>
+</div>

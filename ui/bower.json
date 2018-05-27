@@ -1,0 +1,79 @@
+{
+  "name": "kyc",
+  "version": "1.0.0",
+  "description": "kyc-zambia",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "airtel",
+    "kyc",
+    "zambia"
+  ],
+  "author": "Varun Sharma <a_varun1.sharma@airtel.com>",
+  "license": "ISC",
+  "dependencies": {
+    "angular-base64-upload": "^0.1.23",
+    "angular-paging": "^2.2.2",
+    "angular-loading-bar": "^0.9.0",
+    "angular-sanitize": "^1.6.5",
+    "angular-translate-loader-static-files": "^2.15.2",
+    "angular-ui-router": "^1.0.5",
+    "angular-translate": "^2.15.2",
+    "angular": "^1.6.5",
+    "angularjs-datepicker": "^2.1.23",
+    "bootstrap": "3.3.7",
+    "oclazyload": "ocLazyLoad#^1.1.0"
+  },
+  "overrides":{
+    "angular":{
+      "main":"angular.min.js"
+    },
+    "angular-base64-upload":{
+      "main":"dist/angular-base64-upload.js"
+    },
+    "angularjs-datepicker":{
+      "main":["dist/angular-datepicker.min.js","dist/angular-datepicker.min.css"]
+    },
+    "angular-loading-bar":{
+      "main":["build/loading-bar.min.js","build/loading-bar.min.css"]
+    },
+    "angular-paging":{
+      "main":"dist/paging.min.js"
+    },
+    "angular-sanitize":{
+      "main":"angular-sanitize.min.js"
+    },
+    "angular-translate":{
+      "main":"angular-translate.min.js"
+    },
+    "angular-translate-loader-static-files":{
+      "main":"angular-translate-loader-static-files.min.js"
+    },
+    "angular-ui-router":{
+      "main":"release/angular-ui-router.min.js"
+    },
+    "bootstrap":{
+      "main":["dist/css/bootstrap.min.css","dist/js/bootstrap.min.js","dist/fonts/*"]
+    },
+    "jquery":{
+      "main":"dist/jquery.min.js"
+    },
+    "oclazyload":{
+      "main":"dist/ocLazyLoad.min.js"
+    }
+  },
+  "authors": [
+    "varun sharma <a_Varun1.Sharma@airtel.com>"
+  ],
+  "main": "",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

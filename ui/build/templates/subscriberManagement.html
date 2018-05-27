@@ -1,0 +1,49 @@
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              {{'Customer Management' | translate }}
+            </div>
+            <div class="panel-body">                                  
+            	<form role="form" ng-submit="validateOtp()" name="searchForm">
+                    <div class="row">  
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <!-- <label>ENTER MSISDN</label> -->
+                                <input type = "text" class="form-control" name="msisdn" placeholder="{{'MSISDN' | translate }}" autofocus ng-model="search.numbers[0].msisdn" ng-pattern="/(^0$)|(^[1-9]\d{0,9}$)/" maxlength="9">
+                                <p class="error-msg" ng-show="searchForm.msisdn.$dirty || searchForm.msisdn.$invalid">
+									<span ng-show="searchForm.msisdn.$error.pattern" class="mandatory">{{'Only numbers are allowed.' | translate}}</span>
+								</p>
+                            </div>
+                         </div>                                 
+                     </div>
+                </form>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="modal fade createUserModal" id="createUserModal" role="dialog" aria-labelledby="createUserModal">  <!-- data-ng-if="showAddSubscriberModal" -->
+	<div class="modal-dialog modal-lg modal-xs modal-sm" role="document">
+	   <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Add User</h4>
+	      </div>
+	      <div class="modal-body">
+	          <div class="row">     
+	              	<form role="form" class="myForm" name="addUserForm" id="addUserForm" ng-submit="addSubscriber()" novalidate>
+						<div class="col-md-12" ng-include="templates.editSubscriberModal"></div>
+					</form>
+	          </div>
+	      </div>
+		  <div class="modal-footer">
+		        <input type="submit" class="btn btn-danger" ng-click="addUser()" value="Submit"/> 
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+	   </div>
+	</div>
+</div>

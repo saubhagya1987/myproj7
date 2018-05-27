@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cp-report-log" language="groovy" pageWidth="745" pageHeight="842" columnWidth="705" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c287f9df-527f-45e4-b040-b4ec696dd99f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="org.apache.commons.lang.time.*"/>
+	<style name="alternating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2!=0]]></conditionExpression>
+			<style backcolor="#AAD7F8"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#C5E2F7"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="created_on" class="java.util.Date"/>
+	<parameter name="user_name" class="java.lang.String"/>
+	<parameter name="final_status" class="java.lang.String"/>
+	<parameter name="report_view" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[{call CP_REPORT_LOG($P{created_on},$P{user_name},$P{final_status},$P{report_view},$P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="MSISDN" class="java.lang.String"/>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="LAST_NAME" class="java.lang.String"/>
+	<field name="FINAL_STATUS_REASON" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9b6e5178-7ed0-4972-b2a3-dccaf7ced9c2" x="237" y="45" width="100" height="25"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Period : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f558fc89-d2a6-461e-93f2-24748a2d2e5f" x="337" y="45" width="100" height="25">
+					<printWhenExpression><![CDATA[$P{report_view}.equals("DAILY")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format($P{created_on})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0802adc8-b95e-4b0f-b6de-79bc2c9785a5" x="337" y="45" width="200" height="25">
+					<printWhenExpression><![CDATA[$P{report_view}.equals("WEEKLY")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format($P{created_on})+" - "+new SimpleDateFormat("dd MMM yyyy").format(DateUtils.addDays($P{created_on},7))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ef50228-1ff2-4b36-812f-b6b899068cf8" x="337" y="45" width="200" height="25">
+					<printWhenExpression><![CDATA[$P{report_view}.equals("MONTHLY")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format($P{created_on})+" - "+new SimpleDateFormat("dd MMM yyyy").format(DateUtils.addDays($P{created_on},30))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="14e9628d-046e-4a9e-a2ad-d10b02c1006c" x="197" y="2" width="281" height="42">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("APPROVED")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Approved Registration log]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="70d333f5-665d-484e-93f5-917977bd75eb" x="197" y="2" width="281" height="42">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("BARRED")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Barred Registration log]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e31ca3b-32ff-4323-91fa-a875abde4276" x="197" y="2" width="281" height="42">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("REJECTED")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rejected Registration log]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8746512-b565-43d5-bd3b-5143894f5f82" x="197" y="2" width="281" height="42">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("HOTLINED")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hotlined Registration log]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cb570ee5-38e9-456e-9e41-5ea30c3f8634" x="197" y="3" width="281" height="42">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("EDIT")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edit Registration log]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d878c6c5-a3ed-4f98-b4f6-3417c537519a" x="25" y="1" width="55" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="940b6f56-4b45-4c66-a2b8-c79b8d4a873a" x="130" y="1" width="100" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c08de432-fde4-416e-bde1-d84c16182e8c" x="280" y="1" width="100" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5ab2f037-f3c9-41d1-9020-90c3c3eb05ce" x="430" y="1" width="100" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MSISDN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d824816c-1901-4ad2-8bdf-d8fd4866092b" x="580" y="1" width="100" height="38">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("BARRED")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bar Reason]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="13d6afe3-1271-4f50-bce1-fe380dd8f07f" x="25" y="0" width="55" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c03fd9a5-e5a8-4cb4-aa93-a8cffba752b5" x="130" y="0" width="100" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="281ead7a-dfa6-4745-ae10-c9330df17a30" x="280" y="0" width="100" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9c8d418-d070-4a39-8eae-c5bd3c84ed0d" x="430" y="0" width="100" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MSISDN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b90b6615-acb6-43be-a126-fc0c2f1e11af" x="580" y="0" width="100" height="25">
+					<printWhenExpression><![CDATA[$P{final_status}.equals("BARRED")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FINAL_STATUS_REASON}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

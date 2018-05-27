@@ -1,0 +1,42 @@
+<form class="form-horizontal" name="commissionForm">
+		<div class="panel panel-default">
+			<div class="panel-heading">{{"Commission Management" | translate}}</div>
+				<div class="panel-body">
+					<div class="col-md-12 noPadding">
+						<div class="col-lg-4">
+							<div class="form-group">
+								<label>Sub Role <span class="mandatory">*</span> </label>
+								<select class="form-control" required="required" ng-change="getCommissionRule()"
+									name="subRole" id="subRole" ng-model="commission.subRoleId" 
+									ng-options="subRole.roleId as (subRole.userRoleName) for subRole in allSubRoles">
+									<option value=" ">--: Select:--</option>
+								</select>
+								<p class="error-msg"
+									ng-show="addUserForm.$submitted || addUserForm.subRole.$touched">
+									<span ng-show="addUserForm.subRole.$error.required" class="mandatory">Please select sub-role.</span>
+								</p>
+							</div>
+						</div>
+						<!-- <div class="col-lg-12">
+							<div class="form-group">
+								<label>Commission Rule</label>
+								<textarea class="form-control"
+									ng-model="userForm.userDetail.firstName" maxlength="70" minlength="3"
+									placeholder="Old Commission Rule" name="firstName"></textarea>
+							</div>
+						</div> -->
+					</div>
+					<div class="col-md-12 noPadding">
+					    <label for="inputEmail" class="control-label">Edit Commission rules content</label>
+						<textarea class="col-md-12 col-xs-12" id="com" ng-model="commission.commissionValue"></textarea>
+					</div>
+					<div class="col-lg-12 margin-top-10 noPadding">
+					    <div class="form-group">
+					        <div class="col-xs-offset-9 col-xs-3 text-right">
+					            <button type="submit" class="btn btn-danger" ng-disabled="commission.commissionValue==null || commission.commissionValue==''" ng-click="saveCommissionRule()" >Update</button>
+					        </div>
+					    </div>
+				    </div>
+				</div>
+		    </div>
+</form>

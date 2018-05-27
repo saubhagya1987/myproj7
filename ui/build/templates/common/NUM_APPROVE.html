@@ -1,0 +1,30 @@
+<div class="col-lg-12" ng-if="actionObject.action=='BARRED'">
+	<div class="form-group">
+		<label>Reason For Partial Registration <span class="mandatory">*</span></label>
+		<select class="form-control" required="required" multiple
+			name="reason" id="reason" ng-model="actionObject.statusReason" 
+			ng-options="subRole as (subRole) for subRole in subList">
+			<option value=" ">--: Select:--</option>
+		</select>
+		<p class="error-msg"
+			ng-show="statusForm.$submitted || statusForm.reason.$touched">
+			<span ng-show="statusForm.subRole.$error.required" class="mandatory">Please select sub-role.</span>
+		</p>
+	</div>
+</div>
+<div class="col-lg-12" ng-if="actionObject.action=='APPROVED'">
+	<div class="form-group">
+		<label>Other Details</label>
+		 <textarea class="form-control" name="details" ng-pattern='/(^[A-Za-z0-9., ]*$)/' ng-model="actionObject.statusReason2"></textarea>
+		<p class="error-msg"
+			ng-show="statusForm.$submitted || statusForm.details.$touched">
+			<span ng-show="statusForm.details.$error.pattern" class="mandatory">Special Characters are not allowed.</span>
+		</p> 
+	</div>
+</div>
+<div class="col-lg-12 margin-top-10">
+	<div class="form-group">
+		<button class="btn btn-danger" ng-disabled="actionObject.action=='BARRED' && actionObject.statusReason==null && actionObject.statusReason2==null">{{templates.headingStatusModal}}</button>
+		<button class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+{
+"validation_user_role_required" :"Please select user role",
+"validation_fname_required" :"Please enter first name",
+"validation_lname_required" :"Please enter last name",
+"validation_name_pattern" :"Numbers, special characters, continuous(more than 3), sequential characters(more than 4) and Sequential Keyboard Characters (more than 3) are not allowed",
+"msisdn_req" :"Please enter MSISDN",
+"user_req":"Please enter User Name",
+"only_num":"Only numbers are allowed",
+"nine_digit":"9 digit number required",
+"five_digit":"5 digit number required",
+"nineteen_digit":"5 digit number required",
+"ten_digit":"10 digit number required",
+"sim_serial_req":"Sim Serial No is required"
+}

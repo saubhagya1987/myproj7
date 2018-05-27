@@ -1,0 +1,100 @@
+<div class="navbar-header">
+	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" ><img src="assets/images/logo.png" alt="airtel_logo" width=80px></a>
+</div>
+<div>
+	<ul class="nav navbar-top-links navbar-right">
+		<!-- /.dropdown/language -->
+		<li class="dropdown"><a class="dropdown-toggle myHover"
+			data-toggle="dropdown"> language <i class="fa fa-language fa-fw" style="cursor:pointer"></i> <i
+				class="fa fa-caret-down" style="cursor:pointer"></i> 
+		</a>
+			<ul class="dropdown-menu dropdown-language">
+				<li ><a ng-click="changeLanguage('en')"><i class=""></i>
+						English</a></li>
+				<!-- <li class="divider"></li> -->
+				<li ng-show="selectedLanguage == 'English' "><a ng-click="changeLanguage('sw')"><i class=""></i>
+						Swahili</a></li>
+			</ul></li>
+		<!-- /.dropdown /profile/change password/logout-->
+		<li class="dropdown"><a class="dropdown-toggle myHover capitalize"
+			data-toggle="dropdown">Hello {{userFullName}}<i class="fa fa-user fa-fw" style="cursor:pointer"></i> <i
+				class="fa fa-caret-down" style="cursor:pointer"></i>
+		</a>
+			<ul class="dropdown-menu dropdown-user">
+				<!-- <li><a href="#"><i class="fa fa-user fa-fw"></i> User
+						Profile</a></li> -->
+				<!-- <li><a ui-sref="dashboard.changePassword"><i class="fa fa-unlock-alt fa-fw"></i>
+						{{"Change Password" || translate}} </a></li> -->
+				<li><a ng-click="logout()"><i
+						class="fa fa-sign-out fa-fw"></i> {{"Logout" || translate}}</a></li>
+			</ul> <!-- /.dropdown-user --></li>
+		<!-- /.dropdown -->
+	</ul>
+</div>
+<div class="navbar-default sidebar" role="navigation"> 
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+			<li>
+            	<a ui-sref="dashboard.home" ui-sref-active="active" class="myHover"><i class="fa fa-home"></i>{{"Home" | translate}}</a>
+           	</li>
+            <li access="ROLE_ADMIN">
+                <a ui-sref="dashboard.userManagement" ui-sref-active="active" class="myHover"><i class="fa fa-users"></i>{{"User Management" | translate}}</a>
+            </li>
+          	<li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.addSubscriber" ui-sref-active="active" class="myHover"><i class="fa fa-user-plus"></i>{{'Customer Registration' | translate}}</a>
+            </li>
+            <li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.addSubscriberNewSim" ui-sref-active="active" class="myHover"><i class="fa fa-user-plus"></i>{{'Existing Customer New Sim' | translate}}</a>
+            </li>
+            <li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.editSubscriber" ui-sref-active="active" class="myHover"><i class="fa fa-edit"></i>{{'Customer Edit' | translate}}</a>
+            </li>
+            <li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.editNotApprovedSubscriber" ui-sref-active="active" class="myHover"><i class="fa fa-edit"></i>{{'Customer Edit Non Approved' | translate}}</a>
+            </li>
+             <li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.editBarredSubscriber" ui-sref-active="active" class="myHover"><i class="fa fa-edit"></i>{{'Customer Edit Barred' | translate}}</a>
+            </li>
+			<li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.subscriberAmReg" ui-sref-active="active" class="myHover"><i class="fa fa-user-plus"></i>{{'Customer AM Registration' | translate}}</a>
+            </li>
+          	<li access="ROLE_ADMIN">
+                <a ui-sref="dashboard.management" ui-sref-active="active" class="myHover"><i class="fa fa-user"></i>{{"Manage Input Data" | translate}}</a>
+             </li>
+          	 <li access="ROLE_ADMIN">
+                <a ui-sref="dashboard.resetPassword" ui-sref-active="active" class="myHover"><i class="fa fa-retweet"></i>{{"Reset Password (CP)" | translate}}</a>
+             </li>
+             <li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.commissionRules" ui-sref-active="active" class="myHover"><i class="fa fa-bar-chart"></i>{{"Commission Rules" | translate}}</a>
+             </li>
+             <li access="ROLE_ADMIN">
+                <a ui-sref="dashboard.commissionRulesEdit" ui-sref-active="active" class="myHover"><i class="fa fa-bar-chart"></i>{{"Commission Rules" | translate}}</a>
+             </li>
+             <li access="ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES">
+                <a ui-sref="dashboard.searchCustomer" ui-sref-active="active" class="myHover"><i class="fa fa-search"></i>{{"Search Customer" | translate}}</a>
+             </li>
+             <li access="ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR">
+                <a ui-sref="dashboard.openCases" ui-sref-active="active" class="myHover"><i class="fa fa-envelope-open"></i>{{"Open Cases" | translate}}</a>
+             </li>
+             <li access="ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR">
+                <a ui-sref="dashboard.closeCases" ui-sref-active="active" class="myHover"><i class="fa fa-envelope"></i>{{"Closed Cases" | translate}}</a>
+             </li>
+             <li access="ROLE_ADMIN,ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR">
+                <a ui-sref="dashboard.bulkUpload" ui-sref-active="active" class="myHover"><i class="fa fa-upload"></i>{{"Bulk Upload" | translate}}</a>
+             </li>
+             <li access="ROLE_SND_DIRECTOR,ROLE_TSM">
+                <a ui-sref="dashboard.createCp" ui-sref-active="active" class="myHover"><i class="fa fa-handshake-o"></i>{{"Create CP" | translate}}</a>
+             </li>
+             <li access="ROLE_DATA_ENTRY,ROLE_DATA_EXE_AUDIT,ROLE_ENTERPRISE,ROLE_CHABEBA,ROLE_BOOTH,ROLE_SSO,ROLE_OWN_DEVICE_RETAILER,ROLE_OWN_DEVICE_CHABEBA,ROLE_MINISHOP,ROLE_AIRTEL_MONEY_EXPRESS_SHOP,ROLE_COFO_AIRTEL_SHOP,ROLE_COCO_AIRTEL_SHOP,ROLE_AGENCY,ROLE_CHAIN_STORES,ROLE_OWN_DEVICE_CHAIN_STORES,ROLE_CUSTOMER_SERVICE,ROLE_REGULATORY,ROLE_INTERNAL_AUDITOR,ROLE_SND_DIRECTOR,ROLE_TSM,ROLE_SND_NATIONAL_TEAM,ROLE_ZBM">
+                <a ui-sref="dashboard.reportsHome" ui-sref-active="active" class="myHover"><i class="fa fa-line-chart"></i>{{"Reports" | translate}}</a>
+             </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div> 

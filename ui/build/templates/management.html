@@ -1,0 +1,123 @@
+<form class="form-horizontal" name="managementForm" ng-submit="managementForm.$valid && updateConfigData()">
+		<div class="panel panel-default">
+			<div class="panel-heading">{{"User Data Management" | translate}}</div>
+				<div class="panel-body">
+				    <div class="form-group margin-top-10">
+				        <label for="inputEmail" class="control-label col-xs-5 text-left important">1. Email ID for AM barring</label>
+				        <div class="col-xs-7">
+				            <input type="email" class="form-control" emailval name="inputEmail" id="inputEmail" placeholder="Email ID for AM barring" ng-model="data.amBarring">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.inputEmail.$touched">
+								<span
+									ng-show="(managementForm.inputEmail.$error.email || managementForm.inputEmail.$error.emailval)" class=mandatory>{{'Please enter valid email-id' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="inputEmail2" class="control-label col-xs-5 text-left important">2. Email ID for CP support</label>
+				        <div class="col-xs-7">
+				            <input type="email" class="form-control" name="inputEmail2" id="inputEmail2" placeholder="Email ID for CP support" ng-model="data.cpSupport"
+				            >
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.inputEmail2.$touched">
+								<span
+									ng-show=managementForm.inputEmail2.$error.email class=mandatory>{{'Please enter valid email-id' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				       <div class="form-group">
+				        <label for="inputf" class="control-label col-xs-5 text-left important">3. Blacklist for SIM SWAP denial @ non airtel shops</label>
+				        <div class="col-xs-7">
+				            <input type="file" class="form-control" id="inputf" filevalid base-sixty-four-input ng-model="fake" name="inputf" accept=".csv" placeholder="Blacklist for SIM SWAP denial @ non airtel shops" file-model="data.blacklistSimSwapDenial">
+				           	<p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.inputf.$touched">
+								<span
+									ng-show="(managementForm.inputf.$error.filevalid || managementForm.inputf.$error.accept)" class=mandatory>{{'Please enter valid file' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input1" class="control-label col-xs-5 text-left important">4. AM limit for SIM SWAP denial at non Airtel shops</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input1" id="input1" ng-pattern="/^[0-9]+$/" placeholder="Days to hotline a non RGE customer" ng-model="data.limitSimSwapDenial">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input1.$touched">
+								<span
+									ng-show=managementForm.input1.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input1" class="control-label col-xs-5 text-left important">5. Days to hotline a non RGE customer</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input1" id="input1" ng-pattern="/^[0-9]+$/" placeholder="Days to hotline a non RGE customer" ng-model="data.hotlineNonRgeCustomer">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input1.$touched">
+								<span
+									ng-show=managementForm.input1.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input2" class="control-label col-xs-5 text-left important">6. Days to barring a non RGE customer</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input2" id="input2" ng-pattern="/^[0-9]+$/" placeholder="Days to barring a non RGE customer" ng-model="data.barringNonRgeCustomer">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input2.$touched">
+								<span
+									ng-show=managementForm.input2.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input4" class="control-label col-xs-5 text-left important">7. No of connections allowed per ID</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input4" id="input4" ng-pattern="/^[0-9]+$/" placeholder="No of connections allowed per ID" ng-model="data.connectionsAllowed">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input4.$touched">
+								<span
+									ng-show=managementForm.input4.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input5" class="control-label col-xs-5 text-left important">8. Days to reject a customer with partial GKYC status</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input5" id="input5" ng-pattern="/^[0-9]+$/" placeholder="Days to reject a customer with barred GKYC status" ng-model="data.rejectBarredGKYC">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input5.$touched">
+								<span
+									ng-show=managementForm.input5.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input5" class="control-label col-xs-5 text-left important">9. Digit to match in ID</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input5" id="input5" ng-pattern="/^[0-9]+$/" placeholder="Days to reject a customer with barred GKYC status" ng-model="data.noOfDigitsMatchIdSimSwap">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input5.$touched">
+								<span
+									ng-show=managementForm.input5.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label for="input5" class="control-label col-xs-5 text-left important">10. Times GKYC status can be changed</label>
+				        <div class="col-xs-7">
+				            <input type="text" class="form-control" name="input5" id="input5" ng-pattern="/^[0-9]+$/" placeholder="Days to reject a customer with barred GKYC status" ng-model="data.noOfTimesGkycStatusChanged">
+				            <p class="error-msg"
+								ng-show="managementForm.$submitted || managementForm.input5.$touched">
+								<span
+									ng-show=managementForm.input5.$error.pattern class=mandatory>{{'Please enter numbers only' | translate}}.</span>
+							</p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-xs-offset-9 col-xs-3 text-right">
+				            <button type="submit" class="btn btn-danger">Update</button>
+				        </div>
+				    </div>
+			    </div>
+		    </div>
+</form>

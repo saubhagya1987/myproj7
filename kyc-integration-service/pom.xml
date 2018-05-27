@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.airtel</groupId>
+  <artifactId>kyc-integration-service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>kyc-integration-service</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <com.airtel.version>0.0.1-SNAPSHOT</com.airtel.version>
+    <springframework.version>4.3.1.RELEASE</springframework.version>
+    
+  <springsecurity.version>4.1.1.RELEASE</springsecurity.version>
+    <hibernate.version>5.1.2.Final</hibernate.version>
+  </properties>
+
+  <dependencies>
+  	<dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>kyc-helper</artifactId>
+		<version>${com.airtel.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>airtel-singleview-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<!-- <dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>airtel-am-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency> -->
+	<dependency>
+		<groupId>com.airtel.africa</groupId>
+		<artifactId>airtel-am-soap-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	
+	<!-- <dependency>
+		<groupId>airtel-am-new-soap-service</groupId>
+		<artifactId>com.airtel.comviva.updated</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency> -->
+	
+	
+	
+	
+	<!-- <dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>airtel-hp-service</artifactId>
+		<version>1.0</version>
+	</dependency> -->
+	
+	<dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>airtel-ema-service</artifactId>
+		<version>1.0</version>
+		</dependency>
+	<dependency>
+		<groupId>com.airtel.africa</groupId>
+		<artifactId>airtel-email-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>airtel-ssf-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>airtel-smpp-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.airtel</groupId>
+		<artifactId>kyc-persistence</artifactId>
+		<version>${com.airtel.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>    
+   <finalName>kyc-integration-service</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>
